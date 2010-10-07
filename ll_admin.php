@@ -1,4 +1,9 @@
 <?php
+/**
+ * The HTML for the admin options page.
+ *
+ * @package WordPress
+ */
   if($_POST['oscimp_hidden'] == 'Y') {
     //Form data sent
     $ll_org_id = $_POST['ll_org_id'];
