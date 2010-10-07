@@ -40,6 +40,7 @@ function ll_video_options() {
 
 add_option('ll_default_width', 480);
 add_option('ll_default_height', 411);
+add_option('ll_additional_flashvars', "");
 
 define("LIMELIGHT_WIDTH", 480); // default width
 define("LIMELIGHT_HEIGHT", 411); // default height
@@ -49,8 +50,9 @@ define("LIMELIGHT_TARGET",'<object width="###WIDTH###" height="###HEIGHT###" id=
 function limelight_plugin_callback($match) {
   $tag_parts = explode(" ", rtrim($match[0], "]"));
   $flashvars = $tag_parts[1];
+  $additional_flashvars = get_option('ll_additional_flashvars', "");
   $output = LIMELIGHT_TARGET;
-  $output = str_replace("###FLASHVARS###", $tag_parts[1], $output);
+  $output = str_replace("###FLASHVARS###", "$additional_flashvars&$flashvars", $output);
 
   if (array_key_exists(2, $tag_parts)) {
     $width = $tag_parts[2];
