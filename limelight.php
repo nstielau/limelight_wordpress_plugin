@@ -8,6 +8,10 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
+
+//////////////////////////////////////////////
+// Menu Options
+//////////////////////////////////////////////
 add_action('admin_menu', 'll_settings_menu');
 
 function ll_settings_menu() {
@@ -25,12 +29,17 @@ function ll_video_options() {
 
 
 
+//////////////////////////////////////////////
 // Embed Code Filter
+//////////////////////////////////////////////
 
 // "[limelight mediaId=MEDIA_ID]"
 // "[limelight channelId=CHANNEL_ID]"
 // "[limelight channelId=CHANNEL_ID 210 175]"
 // "[limelight channelId=CHANNEL_ID&someFlashVar=SOME_FLASHVAR 210 175]"
+
+add_option('ll_default_width', 480);
+add_option('ll_default_height', 411);
 
 define("LIMELIGHT_WIDTH", 480); // default width
 define("LIMELIGHT_HEIGHT", 411); // default height
@@ -40,25 +49,23 @@ define("LIMELIGHT_TARGET",'<object width="###WIDTH###" height="###HEIGHT###" id=
 function limelight_plugin_callback($match) {
   $tag_parts = explode(" ", rtrim($match[0], "]"));
   $flashvars = $tag_parts[1];
-  $width = $tag_parts[2];
-  $height = $tag_parts[3];
   $output = LIMELIGHT_TARGET;
   $output = str_replace("###FLASHVARS###", $tag_parts[1], $output);
-  if (count($tag_parts) > 2) {
-    if ($tag_parts[2] == 0) {
-      $output = str_replace("###WIDTH###", LIMELIGHT_WIDTH, $output);
-    } else {
-      $output = str_replace("###WIDTH###", $tag_parts[2], $output);
-    }
-    if ($tag_parts[3] == 0) {
-      $output = str_replace("###HEIGHT###", LIMELIGHT_HEIGHT, $output);
-    } else {
-      $output = str_replace("###HEIGHT###", $tag_parts[3], $output);
-    }
+
+  if (array_key_exists(2, $tag_parts)) {
+    $width = $tag_parts[2];
   } else {
-    $output = str_replace("###WIDTH###", LIMELIGHT_WIDTH, $output);
-    $output = str_replace("###HEIGHT###", LIMELIGHT_HEIGHT, $output);
+    $width = get_option('ll_default_width', LIMELIGHT_WIDTH);
   }
+  $output = str_replace("###WIDTH###", $width, $output);
+
+  if (array_key_exists(3, $tag_parts)) {
+    $height = $tag_parts[3];
+  } else {
+    $height = get_option('ll_default_height', LIMELIGHT_HEIGHT);
+  }
+  $output = str_replace("###HEIGHT###", $height, $output);
+
   return ($output);
 }
 
