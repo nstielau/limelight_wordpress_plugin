@@ -4,7 +4,7 @@
  *
  * @package WordPress
  */
-  if($_POST['oscimp_hidden'] == 'Y') {
+  if($_POST['limelight_hidden'] == 'Y') {
     //Form data sent
     $ll_org_id = $_POST['ll_org_id'];
     update_option('ll_org_id', $ll_org_id);
