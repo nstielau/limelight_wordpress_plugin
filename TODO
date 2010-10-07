@@ -2,9 +2,21 @@ Considerations:
   Who owns code?
   Is plugin on wordpress.org?
   Where is code hosted
+  License?
 
 Features:
   Translation?
 
 TODO:
   Check out other plugins, kaltura, youtube, etc
+  Filter
+    options
+      height
+      width
+      flashvars
+    Default options in admin page
+
+  MediaPile
+    like wordTube?
+  Widgets?
+  Template functions?
