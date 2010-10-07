@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Limelight
+Plugin Name: Limelight Video Integration
 Description: Integrates your video content into Wordpress.
 Version: 0.0.1
 Plugin URI: http://www.limelightnetworks.com/
