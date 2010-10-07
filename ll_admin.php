@@ -33,6 +33,7 @@
     <?php    echo "<h4>" . __( 'Limelight Embed Code Settings', 'limelight_text_domain' ) . "</h4>"; ?>
     <p><?php _e("Video player width (px): " ); ?><input type="text" name="ll_default_width" value="<?php echo $ll_default_width; ?>" size="5"><?php _e(" ex: 480" ); ?></p>
     <p><?php _e("Video player height (px): " ); ?><input type="text" name="ll_default_height" value="<?php echo $ll_default_height; ?>" size="5"><?php _e(" ex: 411" ); ?></p>
+    <p><em>Warning</em>: This will change the height and width for any videos that don&quot;t have specific dimensions set. </p>
 
     <?php    echo "<h4>" . __( 'Limelight API Settings', 'limelight_text_domain' ) . "</h4>"; ?>
     <p><?php _e("Organization ID: " ); ?><input type="text" name="ll_org_id" value="<?php echo $ll_org_id; ?>" size="32"><?php _e(" ex: 1fcedd0a66334ac28fbb2a4117707145" ); ?></p>
