@@ -9,6 +9,8 @@ $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+	<script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.js?callback=handleMedia"></script>
+
   <script language="javascript" type="text/javascript">
 function writeShortCode() {
   if(window.tinyMCE) {
@@ -22,10 +24,22 @@ function writeShortCode() {
 
   return;
 }
+
+function handleMedia(data) {
+  var html = "";
+  html += "<ul>";
+  for each (var m in data) {
+    html += "<li>" + data[m].title + "</li>";
+  }
+  html += "</ul>";
+  document.getElementById('content').innerHTML = html;
+}
 </script>
 <body>
 
+<div id="content">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
 
 <div class="mceActionPanel">
 	<div style="float: left">
