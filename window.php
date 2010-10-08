@@ -30,9 +30,10 @@ function handleChannels(data) {
     html += "<li>" + data[m].title + "</li>";
   }
   html += "</ul>";
+  console.log(window);
   var cl = document.getElementById('mce_0_ifr')[1].contentDocument.getElementById('channels_list');
   console.log(cl);
-  console.log(window);
+
   cl.innerHTML = html;
   // document.write(html);
   //alert("Loaded " + data.length + " channels.");
