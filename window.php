@@ -9,7 +9,6 @@ $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
-	<script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.js?callback=handleMedia"></script>
 
   <script language="javascript" type="text/javascript">
 function writeShortCode() {
@@ -25,7 +24,7 @@ function writeShortCode() {
   return;
 }
 
-function handleMedia(data) {
+function handleChannels(data) {
   var html = "";
   html += "<ul>";
   for each (var m in data) {
@@ -35,6 +34,8 @@ function handleMedia(data) {
   document.getElementById('content').innerHTML = html;
 }
 </script>
+	<script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.js?callback=handleChannels"></script>
+</head>
 <body>
 
 <div id="content">
