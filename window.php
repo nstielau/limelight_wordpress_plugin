@@ -28,9 +28,9 @@ function handleChannels(data) {
   var html = "";
   alert(data);
   html += "<ul>";
-  for each (var m in data) {
-    html += "<li>" + data[m].title + "</li>";
-  }
+  // for (var m in data) {
+  //   html += "<li>" + data[m].title + "</li>";
+  // }
   html += "</ul>";
   document.write(html);
   alert("Loaded " + data.length + " channels.");
