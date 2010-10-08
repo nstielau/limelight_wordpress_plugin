@@ -24,14 +24,15 @@ function writeShortCode() {
 }
 function handleChannels(data) {
   var html = "";
-  console.log(data);
+  // console.log(data);
   html += "<ul>";
   for (var m in data) {
     html += "<li>" + data[m].title + "</li>";
   }
   html += "</ul>";
-  var cl = document.getElementById('channels_list');
+  var cl = jQuery('iframe')[1].contentDocument.getElementById('channels_list');
   console.log(cl);
+  cl.innerHTML = html;
   // document.write(html);
   //alert("Loaded " + data.length + " channels.");
 }
