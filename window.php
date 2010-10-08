@@ -22,18 +22,16 @@ function writeShortCode() {
 
   return
 }
-var adoc;
 function handleChannels(data) {
   var html = "";
-  alert(data);
+  console.log(data);
   html += "<ul>";
   for (var m in data) {
     html += "<li>" + data[m].title + "</li>";
   }
   html += "</ul>";
-  adoc = document
   document.write(html);
-  alert("Loaded " + data.length + " channels.");
+  //alert("Loaded " + data.length + " channels.");
 }
 </script>
 <script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.js?callback=handleChannels"></script>
