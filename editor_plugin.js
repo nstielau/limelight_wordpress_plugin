@@ -2,9 +2,10 @@
 
 (function() {
 	// Load plugin specific language pack
-	//tinymce.PluginManager.requireLangPack('ll');
+	tinymce.PluginManager.requireLangPack('limelight');
 
-	tinymce.create('tinymce.plugins.ll', {
+  alert("start");
+	tinymce.create('tinymce.plugins.limelight', {
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
 		 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -13,14 +14,15 @@
 		 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
+
 		init : function(ed, url) {
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
-
-			ed.addCommand('mce_ll', function() {
+      alert("initing");
+			ed.addCommand('mce_limelight', function() {
 				ed.windowManager.open({
 					file : url + '/window.php',
-					width : 360 + ed.getLang('ll.delta_width', 0),
-					height : 210 + ed.getLang('ll.delta_height', 0),
+					width : 360 + ed.getLang('limelight.delta_width', 0),
+					height : 210 + ed.getLang('limelight.delta_height', 0),
 					inline : 1
 				}, {
 					plugin_url : url // Plugin absolute URL
@@ -28,15 +30,15 @@
 			});
 
 			// Register example button
-			ed.addButton('ll', {
+			ed.addButton('limelight', {
 				title : 'Somethign about limelight',
-				cmd : 'mce_ll',
-				image : url + '/ll.gif'
+				cmd : 'mce_limelight',
+				image : url + '/limelight.gif'
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected
 			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('ll', n.nodeName == 'IMG');
+				cm.setActive('limelight', n.nodeName == 'IMG');
 			});
 		},
 
@@ -48,7 +50,7 @@
 		 */
 		getInfo : function() {
 			return {
-					longname  : 'll',
+					longname  : 'limelight',
 					author 	  : 'Alex Rabe',
 					authorurl : 'http://alexrabe.boelinger.com',
 					infourl   : 'http://alexrabe.boelinger.com',
@@ -58,7 +60,7 @@
 	});
 
 	// Register plugin
-	tinymce.PluginManager.add('ll', tinymce.plugins.ll);
+	tinymce.PluginManager.add('limelight', tinymce.plugins.limelight);
 })();
 
 
