@@ -26,6 +26,7 @@ function writeShortCode() {
 <script language="javascript" type="text/javascript">
 function handleChannels(data) {
   var html = "";
+  alert(data);
   html += "<ul>";
   // for each (var m in data) {
   //   html += "<li>" + data[m].title + "</li>";
