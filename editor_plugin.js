@@ -2,7 +2,7 @@
 
 (function() {
 	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('ll');
+	//tinymce.PluginManager.requireLangPack('ll');
 
 	tinymce.create('tinymce.plugins.ll', {
 		/**
