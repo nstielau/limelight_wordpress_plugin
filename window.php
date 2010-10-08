@@ -32,6 +32,7 @@ function handleChannels(data) {
   // }
   html += "</ul>";
   document.write(html);
+  alert("Loaded " + data.size + " channels.");
 }
 </script>
 </head>
