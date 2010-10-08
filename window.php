@@ -32,7 +32,7 @@ function handleChannels(data) {
   html += "</ul>";
   console.log(window);
   console.log(window.document);
-  var cl = document.getElementById('mce_0_ifr')[1].contentDocument.getElementById('channels_list');
+  var cl = window.document.getElementById('channels_list');
   console.log(cl);
 
   cl.innerHTML = html;
