@@ -8,10 +8,6 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
-/**
- * @title TinyMCE V3 Button Integration (for Wp2.5)
- * @author Alex Rabe
- */
 
 class add_ll_button {
 
@@ -50,7 +46,7 @@ class add_ll_button {
 	// Load the TinyMCE plugin : editor_plugin.js (wp2.5)
 	function add_tinymce_plugin($plugin_array) {
 
-		$plugin_array[$this->pluginname] =  "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress/wp-content/plugins/limelight/tinymce.js";
+		$plugin_array[$this->pluginname] =  "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress/wp-content/plugins/limelight/editor_plugin.js";
 
 		return $plugin_array;
 	}
