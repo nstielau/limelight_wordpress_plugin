@@ -8,11 +8,11 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
-var $pluginname = "wordTube";
+$ll_tinymce_pluginname = "wordTube";
 
-add_action('init', 'addbuttons');
+add_action('init', 'add_ll_tinymce_buttons');
 
-function addbuttons() {
+function add_ll_tinymce_buttons() {
 	if ( !current_user_can('edit_posts') && !current_user_can('edit_pages') ) return;
 	if ( get_user_option('rich_editing') == 'true') {
 		add_filter("mce_external_plugins", "add_tinymce_plugin", 5);
@@ -21,12 +21,12 @@ function addbuttons() {
 }
 
 function register_button($buttons) {
-	array_push($buttons, "separator", $this->pluginname );
+	array_push($buttons, "separator", $ll_tinymce_pluginname );
 	return $buttons;
 }
 
 function add_tinymce_plugin($plugin_array) {
-	$plugin_array[$this->pluginname] =  "http://foo.com/jah.js";
+	$plugin_array[$ll_tinymce_pluginname] =  "http://foo.com/jah.js";
 	return $plugin_array;
 }
 
