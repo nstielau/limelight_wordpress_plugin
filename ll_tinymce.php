@@ -8,7 +8,7 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
-$ll_tinymce_pluginname = "wordTube";
+$ll_tinymce_pluginname = "ll_something";
 
 add_action('init', 'add_ll_tinymce_buttons');
 
