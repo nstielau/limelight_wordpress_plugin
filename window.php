@@ -31,15 +31,15 @@ function handleChannels(data) {
   //   html += "<li>" + data[m].title + "</li>";
   // }
   html += "</ul>";
-  document.getElementById('channels_list').innerHTML = html;
+  document.write(html);
 }
 </script>
-  <script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.js?callback=handleChannels"></script>
 </head>
 <body>
 
 <div id="channels_list">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.js?callback=handleChannels"></script>
 </div>
 
 <div class="mceActionPanel">
