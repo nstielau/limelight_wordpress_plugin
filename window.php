@@ -1,12 +1,15 @@
+<?php
+$site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>wordTube</title>
+	<title>Limelight</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>WInDow
-<script language="javascript" type="text/javascript">
+	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+  <script language="javascript" type="text/javascript">
 function writeShortCode() {
   if(window.tinyMCE) {
     window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight blah]");
