@@ -8,8 +8,6 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
-<?php
-
 /**
  * @title TinyMCE V3 Button Integration (for Wp2.5)
  * @author Alex Rabe
