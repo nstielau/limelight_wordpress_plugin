@@ -22,6 +22,7 @@ function writeShortCode() {
 
   return
 }
+var myWindow;
 function handleChannels(data) {
   var html = "";
   // console.log(data);
@@ -30,6 +31,7 @@ function handleChannels(data) {
     html += "<li>" + data[m].title + "</li>";
   }
   html += "</ul>";
+  myWindow = window;
   console.log(window);
   console.log(window.document);
   var cl = window.document.getElementById('channels_list');
