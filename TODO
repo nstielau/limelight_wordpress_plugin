@@ -9,15 +9,11 @@ Features:
 
 TODO:
   Check out other plugins, kaltura, youtube, etc
-  Break out other plugins
-  Filter
-    options
-      height
-      width
-      flashvars
-    Default options in admin page
-
+  Break out other plugins?
+  Complain if org ID isn't set?
+  Ping some URL to track wordpress installs? register_activation_hook
   MediaPile
     like wordTube?
   Widgets?
   Template functions?
+  Documentation
