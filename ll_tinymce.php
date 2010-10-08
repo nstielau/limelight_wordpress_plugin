@@ -26,7 +26,7 @@ function ll_register_button($buttons) {
 }
 
 function ll_add_tinymce_plugin($plugin_array) {
-	$plugin_array[$ll_tinymce_pluginname] =  "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress/wp-content/limelight/tinymce.js";
+	$plugin_array[$ll_tinymce_pluginname] =  "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress/wp-content/plugins/limelight/tinymce.js";
 	return $plugin_array;
 }
 
