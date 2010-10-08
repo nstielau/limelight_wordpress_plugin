@@ -31,7 +31,7 @@ function handleChannels(data) {
   //   html += "<li>" + data[m].title + "</li>";
   // }
   html += "</ul>";
-  window.getElementById('channels_list').innerHTML = html;
+  document.getElementById('channels_list').innerHTML = html;
 }
 </script>
   <script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.js?callback=handleChannels"></script>
