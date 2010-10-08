@@ -4,7 +4,6 @@
 	// Load plugin specific language pack
 	tinymce.PluginManager.requireLangPack('limelight');
 
-  alert("start");
 	tinymce.create('tinymce.plugins.limelight', {
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
@@ -17,7 +16,6 @@
 
 		init : function(ed, url) {
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
-      alert("initing");
 			ed.addCommand('mce_limelight', function() {
 				ed.windowManager.open({
 					file : url + '/window.php',
