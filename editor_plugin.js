@@ -2,7 +2,7 @@
 
 (function() {
 	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('wordTube');
+	tinymce.PluginManager.requireLangPack('ll');
 
 	tinymce.create('tinymce.plugins.ll', {
 		/**
@@ -19,8 +19,8 @@
 			ed.addCommand('mce_ll', function() {
 				ed.windowManager.open({
 					file : url + '/window.php',
-					width : 360 + ed.getLang('wordTube.delta_width', 0),
-					height : 210 + ed.getLang('wordTube.delta_height', 0),
+					width : 360 + ed.getLang('ll.delta_width', 0),
+					height : 210 + ed.getLang('ll.delta_height', 0),
 					inline : 1
 				}, {
 					plugin_url : url // Plugin absolute URL
@@ -31,12 +31,12 @@
 			ed.addButton('ll', {
 				title : 'Somethign about limelight',
 				cmd : 'mce_ll',
-				image : url + '/wordtube.gif'
+				image : url + '/ll.gif'
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected
 			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('wordTube', n.nodeName == 'IMG');
+				cm.setActive('ll', n.nodeName == 'IMG');
 			});
 		},
 
@@ -48,7 +48,7 @@
 		 */
 		getInfo : function() {
 			return {
-					longname  : 'wordTube',
+					longname  : 'll',
 					author 	  : 'Alex Rabe',
 					authorurl : 'http://alexrabe.boelinger.com',
 					infourl   : 'http://alexrabe.boelinger.com',
@@ -58,7 +58,7 @@
 	});
 
 	// Register plugin
-	tinymce.PluginManager.add('wordTube', tinymce.plugins.wordTube);
+	tinymce.PluginManager.add('ll', tinymce.plugins.ll);
 })();
 
 
