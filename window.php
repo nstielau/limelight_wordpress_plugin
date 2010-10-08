@@ -22,7 +22,7 @@ function writeShortCode() {
 
   return
 }
-var myWindow;
+var myWindow = window;
 function handleChannels(data) {
   var html = "";
   // console.log(data);
