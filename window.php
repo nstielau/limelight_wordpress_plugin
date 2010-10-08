@@ -29,11 +29,11 @@ function writeShortCode() {
 
 <div class="mceActionPanel">
 	<div style="float: left">
-		<input type="button" id="cancel" name="cancel" value="<?php _e("Cancel", 'wpTube'); ?>" onclick="tinyMCEPopup.close();" />
+		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
 	</div>
 
 	<div style="float: right">
-		<input type="submit" id="insert" name="insert" value="<?php _e("Insert", 'wpTube'); ?>" onclick="insertwpTubeLink();" />
+		<input type="submit" id="insert" name="insert" value="Insert" onclick="writeShortCode();" />
 	</div>
 </div>
 
