@@ -27,9 +27,9 @@ function writeShortCode() {
 function handleChannels(data) {
   var html = "";
   html += "<ul>";
-  for each (var m in data) {
-    html += "<li>" + data[m].title + "</li>";
-  }
+  // for each (var m in data) {
+  //   html += "<li>" + data[m].title + "</li>";
+  // }
   html += "</ul>";
   document.getElementById('content').innerHTML = html;
 }
