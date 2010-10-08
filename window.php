@@ -21,9 +21,10 @@ function writeShortCode() {
     tinyMCEPopup.close();
   }
 
-  return;
+  return
 }
-
+</script>
+<script language="javascript" type="text/javascript">
 function handleChannels(data) {
   var html = "";
   html += "<ul>";
