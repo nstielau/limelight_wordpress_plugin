@@ -11,7 +11,7 @@ Author URI: http://www.limelightnetworks.com/
 
 class add_ll_button {
 
-	var $pluginname = "ll_something";
+	var $pluginname = "limelight";
 
 	function add_ll_button()  {
 		// Modify the version when tinyMCE plugins are changed.
@@ -58,7 +58,7 @@ class add_ll_button {
 }
 
 // Call it now
-$ll_tinymce_button = new add_ll_button ();
+$ll_tinymce_button = new add_ll_button();
 
 ?>
 

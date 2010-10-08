@@ -1,4 +1,4 @@
 tinyMCE.addI18n({en:{
-wordTube:{	
+limelight:{
 desc : 'Insert a Flash Video'
 }}});
