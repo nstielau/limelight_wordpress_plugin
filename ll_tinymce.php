@@ -8,6 +8,7 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
+// TODO: Figure out how to manipulate iFrame dom with jQuery
 
 class add_ll_button {
 
