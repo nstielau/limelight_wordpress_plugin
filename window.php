@@ -25,13 +25,12 @@ function request_cache($url, $key, $timeout=7200) {
 	  echo "Not cached<br/>";
 		$data = file_get_contents($url);
 		if ($data === false) return false;
-		// $tmpf = tempnam(WP_LOAD_PATH.'/wp-content','limelight_cache');
-		$tmpf = tmpfile();
+		$tmpf = tempnam(sys_get_temp_dir(),'limelight_'.$key.'_cache');
 	  echo "Tmp file: $tmpf<br/>";
 		$fp = fopen($tmpf,"w");
 		fwrite($fp, $data);
 		fclose($fp);
-    update_option('limelight_'.$key.'_cache', $tmp);
+    update_option('limelight_'.$key.'_cache', $tmpf);
 	} else {
 	  echo "Cached<br/>";
 		return file_get_contents($cache_file);
