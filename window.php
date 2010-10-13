@@ -20,7 +20,7 @@ $ll_org_id = get_option('ll_org_id');
 
 
 function request_cache($url, $key, $timeout=7200) {
-  $dest_file = WP_LOAD_PATH."wp-content/$key_limelight_cache";
+  $dest_file = WP_LOAD_PATH."wp-content/".$key."_limelight_cache";
   echo "Dest file: $dest_file<br/>";
 	if(!file_exists($dest_file) || filemtime($dest_file) < (time()-$timeout)) {
 	  echo "Not cached<br/>";
@@ -88,11 +88,13 @@ function request_cache($url, $key, $timeout=7200) {
 <div class="panel_wrapper">
 	<!-- media panel -->
 	<div id="media_panel" class="panel">
+	  <?php
+  $media_url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.json";
+  $media_json = request_cache($media_url, 'media');
+	  ?>
     <p>Select Media</p>
     <select id="media_select">
     <?php
-      $media_url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.json";
-      $media_json = request_cache($media_url, 'media');
       $media_list = json_decode($media_json);
       $count = count($media_list);
       for ($i = 0; $i < $count; $i++) {
