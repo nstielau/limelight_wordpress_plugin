@@ -1,12 +1,18 @@
 <?php
 $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
-function request_cache($url, $ttl) {
-	if(!$data = apc_fetch($url)) {
+function request_cache($url, $dest_file, $timeout=7200) {
+	if(!file_exists($dest_file) || filemtime($dest_file) < (time()-$timeout)) {
 		$data = file_get_contents($url);
 		if ($data === false) return false;
-		apc_store($url,$data, $ttl);
+		$tmpf = tempnam('.','YWS');
+		$fp = fopen($tmpf,"w");
+		fwrite($fp, $data);
+		fclose($fp);
+		rename($tmpf, $dest_file);
+	} else {
+		return file_get_contents($dest_file);
 	}
-	return $data;
+	return($data);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,7 +63,7 @@ function handleChannels(data) {
   <?php
   $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
   $ttl = 60;
-  $channels_json = request_cache($url, $ttl);
+  $channels_json = request_cache($url, 'channel_list_cache');
   $channels_list = json_decode($channels_json);
   $count = count($channels_list);
   for ($i = 0; $i < $count; $i++) {
