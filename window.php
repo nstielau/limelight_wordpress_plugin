@@ -50,30 +50,43 @@ function select_channel() {
 <?php
   if ($ll_org_id != "") {
 ?>
-<div id="channels_list">
-  <select id="channel_select">
-<?php
-  echo "<h2>Channels for $ll_org_id</h2>";
-  $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
-  $channels_json = file_get_contents($url);
-  $channels_list = json_decode($channels_json);
-  $count = count($channels_list);
-  for ($i = 0; $i < $count; $i++) {
-      $title = $channels_list[$i]->title;
-      $id = $channels_list[$i]->channel_id;
-      echo "<option value=\"channelId=$id\">$title</option>\n";
-  }
-?>
-  </select>
+<div class="tabs">
+	<ul>
+		<li id="channels_tab" class="current"><span><a href="javascript:mcTabs.displayTab('channels_tab','channels_panel');" onmousedown="return false;">Channels</a></span></li>
+		<li id="media_tab"><span><a href="javascript:mcTabs.displayTab('media_tab','media_panel');" onmousedown="return false;">Media</a></span></li>
+	</ul>
 </div>
-<div class="mceActionPanel">
-	<div style="float: left">
-		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
-	</div>
+<div class="panel_wrapper">
+	<!-- media panel -->
+	<div id="media_panel" class="panel">
+	  Media!
+  </div>
+  <div id="channels_panel" class="panel current">
+    <p>Select Channel</p>
+    <select id="channel_select">
+  <?php
+    echo "<h2>Channels for $ll_org_id</h2>";
+    $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
+    $channels_json = file_get_contents($url);
+    $channels_list = json_decode($channels_json);
+    $count = count($channels_list);
+    for ($i = 0; $i < $count; $i++) {
+        $title = $channels_list[$i]->title;
+        $id = $channels_list[$i]->channel_id;
+        echo "<option value=\"channelId=$id\">$title</option>\n";
+    }
+  ?>
+    </select>
+  </div>
+  <div class="mceActionPanel">
+  	<div style="float: left">
+  		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+  	</div>
 
-	<div style="float: right">
-		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
-	</div>
+  	<div style="float: right">
+  		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
+  	</div>
+  </div>
 </div>
 <?php } else { ?>
   <p>You must enter in your organization id in the settings page.</p>
