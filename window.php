@@ -1,8 +1,8 @@
 <?php
 /*
 +----------------------------------------------------------------+
-+	wordtube-tinymce V1.60
-+	by Alex Rabe
++ wordtube-tinymce V1.60
++ by Alex Rabe
 +----------------------------------------------------------------+
 */
 
@@ -21,36 +21,33 @@ $ll_org_id = get_option('ll_org_id');
 
 function request_cache($url, $key, $timeout=7200) {
   $cache_file = get_option('limelight_'.$key.'_cache');
-	if(!file_exists($cache_file) || filemtime($cache_file) < (time()-$timeout)) {
-	  echo "Not cached<br/>";
-		$data = file_get_contents($url);
-		if ($data === false) return false;
-		$tmpf = tempnam(sys_get_temp_dir(),'limelight_'.$key.'_cache');
-	  echo "Tmp file: $tmpf<br/>";
-		$fp = fopen($tmpf,"w");
-		fwrite($fp, $data);
-		fclose($fp);
+  if(!file_exists($cache_file) || filemtime($cache_file) < (time()-$timeout)) {
+    $data = file_get_contents($url);
+    if ($data === false) return false;
+    $tmpf = tempnam(sys_get_temp_dir(),'limelight_'.$key.'_cache');
+    $fp = fopen($tmpf,"w");
+    fwrite($fp, $data);
+    fclose($fp);
     update_option('limelight_'.$key.'_cache', $tmpf);
-	} else {
-	  echo "Cached<br/>";
-		return file_get_contents($cache_file);
-	}
-	return($data);
+  } else {
+    return file_get_contents($cache_file);
+  }
+  return($data);
 }
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Limelight Videos</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+  <title>Limelight Videos</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+  <script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+  <script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
   <script language="javascript" type="text/javascript">
-	function init() {
-		tinyMCEPopup.resizeToInnerSize();
-	}
+  function init() {
+    tinyMCEPopup.resizeToInnerSize();
+  }
 
   function writeShortCode(flashVars) {
     if(window.tinyMCE) {
@@ -80,18 +77,18 @@ function request_cache($url, $key, $timeout=7200) {
   if ($ll_org_id != "" && strlen($ll_org_id) == 32) {
 ?>
 <div class="tabs">
-	<ul>
-		<li id="channels_tab" class="current"><span><a href="javascript:mcTabs.displayTab('channels_tab','channels_panel');" onmousedown="return false;">Channels</a></span></li>
-		<li id="media_tab"><span><a href="javascript:mcTabs.displayTab('media_tab','media_panel');" onmousedown="return false;">Media</a></span></li>
-	</ul>
+  <ul>
+    <li id="channels_tab" class="current"><span><a href="javascript:mcTabs.displayTab('channels_tab','channels_panel');" onmousedown="return false;">Channels</a></span></li>
+    <li id="media_tab"><span><a href="javascript:mcTabs.displayTab('media_tab','media_panel');" onmousedown="return false;">Media</a></span></li>
+  </ul>
 </div>
 <div class="panel_wrapper">
-	<!-- media panel -->
-	<div id="media_panel" class="panel">
-	  <?php
+  <!-- media panel -->
+  <div id="media_panel" class="panel">
+    <?php
   $media_url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.json";
   $media_json = request_cache($media_url, 'media');
-	  ?>
+    ?>
     <p>Select Media</p>
     <select id="media_select">
     <?php
@@ -105,13 +102,13 @@ function request_cache($url, $key, $timeout=7200) {
     ?>
     </select>
     <div class="mceActionPanel">
-    	<div style="float: left">
-    		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
-    	</div>
+      <div style="float: left">
+        <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+      </div>
 
-    	<div style="float: right">
-    		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_media();" />
-    	</div>
+      <div style="float: right">
+        <input type="submit" id="insert" name="insert" value="Insert" onclick="select_media();" />
+      </div>
     </div>
   </div>
   <div id="channels_panel" class="panel current">
@@ -119,7 +116,7 @@ function request_cache($url, $key, $timeout=7200) {
     <select id="channel_select">
     <?php
       $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
-      $channels_json = file_get_contents($url);
+      $channels_json = request_cache($url, 'channels');
       $channels_list = json_decode($channels_json);
       $count = count($channels_list);
       for ($i = 0; $i < $count; $i++) {
@@ -130,22 +127,22 @@ function request_cache($url, $key, $timeout=7200) {
     ?>
     </select>
     <div class="mceActionPanel">
-    	<div style="float: left">
-    		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
-    	</div>
+      <div style="float: left">
+        <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+      </div>
 
-    	<div style="float: right">
-    		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
-    	</div>
+      <div style="float: right">
+        <input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
+      </div>
     </div>
   </div>
 </div>
 <?php } else { ?>
   <p>You must enter in your organization id in the settings page.</p>
   <div class="mceActionPanel">
-  	<div style="float: left">
-  		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
-  	</div>
+    <div style="float: left">
+      <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+    </div>
   </div>
 <?php } ?>
 
