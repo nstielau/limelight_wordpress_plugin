@@ -8,15 +8,15 @@
 
 $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
 
-// // look up for the path
-// require_once(dirname(__FILE__).'/limelight-config.php');
-//
-// // check for rights
-// if ( !is_user_logged_in() || !current_user_can('edit_posts') )
-//  wp_die(__("You are not allowed to be here"));
-//
-// // get the organziation id
-// $ll_org_id = get_option('ll_org_id');
+// look up for the path
+require_once(dirname(__FILE__).'/limelight-config.php');
+
+// check for rights
+if ( !is_user_logged_in() || !current_user_can('edit_posts') )
+ wp_die(__("You are not allowed to be here"));
+
+// get the organziation id
+$ll_org_id = get_option('ll_org_id');
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
