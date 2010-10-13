@@ -59,7 +59,7 @@ function writeShortCode(id) {
         echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
     }
   } else {
-    echo "You must enter your Limelight Organization Id in the settings page."
+    echo "You must enter your Limelight Organization Id in the settings page.";
   }
 
   ?>
