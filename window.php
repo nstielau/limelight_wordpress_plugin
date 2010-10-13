@@ -18,7 +18,7 @@ if ( !is_user_logged_in() || !current_user_can('edit_posts') )
 // get the organziation id
 $ll_org_id = get_option('ll_org_id');
 
-$valid_org_id = $ll_org_id && strlen($ll_org_id) == 32
+$valid_org_id = true;// $ll_org_id && strlen($ll_org_id) == 32;
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
