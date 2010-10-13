@@ -20,7 +20,7 @@ function writeShortCode(id) {
     tinyMCEPopup.close();
   }
 
-  return
+  return false;
 }
 var myWindow = window;
 function handleChannels(data) {
@@ -54,7 +54,7 @@ function handleChannels(data) {
   for ($i = 0; $i < $count; $i++) {
       $title = $channels_list[$i]->title;
       $id = $channels_list[$i]->channel_id;
-      echo "<a href=\"writeShortCode('$id');\">$title</a><br/>\n";
+      echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
   }
   ?>
 
