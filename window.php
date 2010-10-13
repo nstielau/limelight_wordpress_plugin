@@ -54,7 +54,6 @@ function writeShortCode(id) {
         $id = $channels_list[$i]->channel_id;
         echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
     }
-  }
 ?>
 
 </div>
