@@ -60,12 +60,6 @@ function writeShortCode(id) {
   }
 ?>
 </div>
-<?php } else { ?>
-  You must enter in your organization id in the settings page.
-<?php } ?>
-
-</div>
-
 <div class="mceActionPanel">
 	<div style="float: left">
 		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
@@ -75,6 +69,11 @@ function writeShortCode(id) {
 		<input type="submit" id="insert" name="insert" value="Insert" onclick="writeShortCode();" />
 	</div>
 </div>
+<?php } else { ?>
+  You must enter in your organization id in the settings page.
+<?php } ?>
+
+
 
 </body>
 </html>
