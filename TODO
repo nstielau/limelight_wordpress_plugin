@@ -16,6 +16,7 @@ TODO:
   MediaPile
     like wordTube?
   Widgets?
+    Wait until caching
   Template functions?
   Documentation in admin page.
   Validation
@@ -27,3 +28,4 @@ TODO:
   Add more options (height, width, playerForm, etc)
   Clean up
   Submit to wordpress.org
+  Loading spinner
