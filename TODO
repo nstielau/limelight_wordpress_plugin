@@ -17,4 +17,13 @@ TODO:
     like wordTube?
   Widgets?
   Template functions?
-  Documentation
+  Documentation in admin page.
+  Validation
+    validate both insert window.php and admin options page
+    Check that the org ID is there
+    Check that is org ID is valid (32 chars, alpha numerics)
+  Caching
+  Fix height issue
+  Add more options (height, width, playerForm, etc)
+  Clean up
+  Submit to wordpress.org
