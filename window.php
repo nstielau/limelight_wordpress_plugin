@@ -18,17 +18,18 @@ if ( !is_user_logged_in() || !current_user_can('edit_posts') )
 // get the organziation id
 $ll_org_id = get_option('ll_org_id');
 
-
+// Cache
 function request_cache($url, $key, $timeout=7200) {
-  $cache_file = get_option('limelight_'.$key.'_cache');
+  $cache_file_key = 'limelight_'.$key.'_cache_file';
+  $cache_file = get_option($cache_file_key);
   if(!file_exists($cache_file) || filemtime($cache_file) < (time()-$timeout)) {
     $data = file_get_contents($url);
     if ($data === false) return false;
-    $tmpf = tempnam(sys_get_temp_dir(),'limelight_'.$key.'_cache');
+    $tmpf = tempnam(sys_get_temp_dir(),$cache_file_key);
     $fp = fopen($tmpf,"w");
     fwrite($fp, $data);
     fclose($fp);
-    update_option('limelight_'.$key.'_cache', $tmpf);
+    update_option($cache_file_key, $tmpf);
   } else {
     return file_get_contents($cache_file);
   }
@@ -58,9 +59,9 @@ function request_cache($url, $key, $timeout=7200) {
       tinyMCEPopup.editor.execCommand('mceRepaint');
       tinyMCEPopup.close();
     }
-
     return false;
   }
+
   function select_channel() {
     var channelSelect = document.getElementById('channel_select');
     writeShortCode(channel_select.value);
@@ -85,13 +86,11 @@ function request_cache($url, $key, $timeout=7200) {
 <div class="panel_wrapper">
   <!-- media panel -->
   <div id="media_panel" class="panel">
-    <?php
-  $media_url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.json";
-  $media_json = request_cache($media_url, 'media');
-    ?>
     <p>Select Media</p>
     <select id="media_select">
     <?php
+      $media_url = "http://api.delvenetworks.com/organizations/$ll_org_id/media.json";
+      $media_json = request_cache($media_url, 'media');
       $media_list = json_decode($media_json);
       $count = count($media_list);
       for ($i = 0; $i < $count; $i++) {
@@ -115,7 +114,7 @@ function request_cache($url, $key, $timeout=7200) {
     <p>Select Channel</p>
     <select id="channel_select">
     <?php
-      $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
+      $url = "http://api.delvenetworks.com/organizations/$ll_org_id/channels.json";
       $channels_json = request_cache($url, 'channels');
       $channels_list = json_decode($channels_json);
       $count = count($channels_list);
