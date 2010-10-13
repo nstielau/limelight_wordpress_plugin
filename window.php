@@ -1,19 +1,25 @@
 <?php
+/*
++----------------------------------------------------------------+
++	wordtube-tinymce V1.60
++	by Alex Rabe
++----------------------------------------------------------------+
+*/
+
 $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
-function request_cache($url, $dest_file, $timeout=7200) {
-	if(!file_exists($dest_file) || filemtime($dest_file) < (time()-$timeout)) {
-		$data = file_get_contents($url);
-		if ($data === false) return false;
-		$tmpf = tempnam('.','YWS');
-		$fp = fopen($tmpf,"w");
-		fwrite($fp, $data);
-		fclose($fp);
-		rename($tmpf, $dest_file);
-	} else {
-		return file_get_contents($dest_file);
-	}
-	return($data);
-}
+
+// look up for the path
+require_once( dirname( dirname(__FILE__) ) .'/limelight-config.php');
+
+// check for rights
+if ( !is_user_logged_in() || !current_user_can('edit_posts') )
+	wp_die(__("You are not allowed to be here"));
+
+// get the organziation id
+$ll_org_id = get_option('ll_org_id');
+
+$valid_org_id = $ll_org_id && strlen($ll_org_id) == 32
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,41 +42,26 @@ function writeShortCode(id) {
 
   return false;
 }
-var myWindow = window;
-function handleChannels(data) {
-  var html = "";
-  // console.log(data);
-  html += "<ul>";
-  for (var m in data) {
-    html += "<li>" + data[m].title + "</li>";
-  }
-  html += "</ul>";
-  myWindow = window;
-  console.log(window);
-  console.log(window.document);
-  var cl = window.document.getElementById('channels_list');
-  console.log(cl);
-
-  cl.innerHTML = html;
-  // document.write(html);
-  //alert("Loaded " + data.length + " channels.");
-}
-</script>
 </head>
 <body>
 
 <div id="channels_list">
   <?php
-  $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
-  $ttl = 60;
-  $channels_json = request_cache($url, 'channel_list_cache');
-  $channels_list = json_decode($channels_json);
-  $count = count($channels_list);
-  for ($i = 0; $i < $count; $i++) {
-      $title = $channels_list[$i]->title;
-      $id = $channels_list[$i]->channel_id;
-      echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
+  if ($valid_org_id) {
+    $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
+    $ttl = 60;
+    $channels_json = file_get_contents($urldecode);
+    $channels_list = json_decode($channels_json);
+    $count = count($channels_list);
+    for ($i = 0; $i < $count; $i++) {
+        $title = $channels_list[$i]->title;
+        $id = $channels_list[$i]->channel_id;
+        echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
+    }
+  } else {
+    echo "You must enter your Limelight Organization Id in the settings page."
   }
+
   ?>
 
 </div>
