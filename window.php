@@ -48,6 +48,11 @@ $ll_org_id = get_option('ll_org_id');
     var channelSelect = document.getElementById('channel_select');
     writeShortCode(channel_select.value);
   }
+
+  function select_media() {
+    var mediaSelect = document.getElementById('media_select');
+    writeShortCode(media_select.value);
+  }
 </script>
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('mediatag').focus();" style="display: none">
@@ -83,7 +88,7 @@ $ll_org_id = get_option('ll_org_id');
     	</div>
 
     	<div style="float: right">
-    		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
+    		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_media();" />
     	</div>
     </div>
   </div>
