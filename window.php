@@ -20,7 +20,7 @@ $ll_org_id = get_option('ll_org_id');
 
 
 function request_cache($url, $key, $timeout=7200) {
-  $dest_file = WP_LOAD_PATH."wp-content/$key_limelight_cache"
+  $dest_file = WP_LOAD_PATH."wp-content/$key_limelight_cache";
 	if(!file_exists($dest_file) || filemtime($dest_file) < (time()-$timeout)) {
 		$data = file_get_contents($url);
 		if ($data === false) return false;
