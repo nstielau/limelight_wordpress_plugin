@@ -57,7 +57,7 @@ $ll_org_id = get_option('ll_org_id');
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('mediatag').focus();" style="display: none">
 <?php
-  if ($ll_org_id != "") {
+  if ($ll_org_id != "" && strlen($ll_org_id) == 32) {
 ?>
 <div class="tabs">
 	<ul>
