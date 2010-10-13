@@ -40,6 +40,7 @@ function writeShortCode(id) {
 
   return false;
 }
+</script>
 </head>
 <body>
 
