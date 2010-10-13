@@ -9,7 +9,7 @@
 $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
 
 // look up for the path
-require_once( dirname( dirname(__FILE__) ) .'/limelight-config.php');
+require_once(dirname(__FILE__).'/limelight-config.php');
 
 // check for rights
 if ( !is_user_logged_in() || !current_user_can('edit_posts') )
