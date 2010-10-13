@@ -77,7 +77,7 @@ $ll_org_id = get_option('ll_org_id');
       $count = count($media_list);
       for ($i = 0; $i < $count; $i++) {
           $title = $media_list[$i]->title;
-          $id = $media_list[$i]->channel_id;
+          $id = $media_list[$i]->media_id;
           echo "<option value=\"mediaId=$id\">$title</option>\n";
       }
     ?>
