@@ -43,24 +43,26 @@ function writeShortCode(id) {
 </script>
 </head>
 <body>
-
-<div id="channels_list">
 <?php
   if ($ll_org_id != "") {
-    echo "<h2>Channels for $ll_org_id</h2>";
-    $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
-    $channels_json = file_get_contents($url);
-    $channels_list = json_decode($channels_json);
-    $count = count($channels_list);
-    for ($i = 0; $i < $count; $i++) {
-        $title = $channels_list[$i]->title;
-        $id = $channels_list[$i]->channel_id;
-        echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
-    }
-  } else {
-    echo "You must enter in your organization id in the settings page.";
+?>
+<div id="channels_list">
+<?php
+  echo "<h2>Channels for $ll_org_id</h2>";
+  $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
+  $channels_json = file_get_contents($url);
+  $channels_list = json_decode($channels_json);
+  $count = count($channels_list);
+  for ($i = 0; $i < $count; $i++) {
+      $title = $channels_list[$i]->title;
+      $id = $channels_list[$i]->channel_id;
+      echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
   }
 ?>
+</div>
+<?php } else { ?>
+  You must enter in your organization id in the settings page.
+<?php } ?>
 
 </div>
 
