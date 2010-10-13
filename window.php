@@ -18,8 +18,6 @@ if ( !is_user_logged_in() || !current_user_can('edit_posts') )
 // get the organziation id
 $ll_org_id = get_option('ll_org_id');
 
-$valid_org_id = true;// $ll_org_id && strlen($ll_org_id) == 32;
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,11 +44,9 @@ function writeShortCode(id) {
 <body>
 
 <div id="channels_list">
-  <?php
-  if ($valid_org_id) {
+<?php
     $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
-    $ttl = 60;
-    $channels_json = file_get_contents($urldecode);
+    $channels_json = file_get_contents($url);
     $channels_list = json_decode($channels_json);
     $count = count($channels_list);
     for ($i = 0; $i < $count; $i++) {
@@ -58,11 +54,8 @@ function writeShortCode(id) {
         $id = $channels_list[$i]->channel_id;
         echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
     }
-  } else {
-    echo "You must enter your Limelight Organization Id in the settings page.";
   }
-
-  ?>
+?>
 
 </div>
 
