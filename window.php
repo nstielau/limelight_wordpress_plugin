@@ -1,5 +1,13 @@
 <?php
 $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
+function request_cache($url, $ttl) {
+	if(!$data = apc_fetch($url)) {
+		$data = file_get_contents($url);
+		if ($data === false) return false;
+		apc_store($url,$data, $ttl);
+	}
+	return $data;
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,7 +56,8 @@ function handleChannels(data) {
 <div id="channels_list">
   <?php
   $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
-  $channels_json = file_get_contents($url);
+  $ttl = 60;
+  $channels_json = request_cache($url, $ttl);
   $channels_list = json_decode($channels_json);
   $count = count($channels_list);
   for ($i = 0; $i < $count; $i++) {
