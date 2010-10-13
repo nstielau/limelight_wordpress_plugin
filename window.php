@@ -28,9 +28,9 @@ $ll_org_id = get_option('ll_org_id');
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
   <script language="javascript" type="text/javascript">
-function writeShortCode(id) {
+function writeShortCode(flashVars) {
   if(window.tinyMCE) {
-    window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight channelId=" + id + "]");
+    window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight " + flashVars + "]");
     //Peforms a clean up of the current editor HTML.
     //tinyMCEPopup.editor.execCommand('mceCleanup');
     //Repaints the editor. Sometimes the browser has graphic glitches.
@@ -40,6 +40,10 @@ function writeShortCode(id) {
 
   return false;
 }
+function select_channel() {
+  var channelSelect = document.getElementById('channel_select');
+  writeShortCode(channel_select.value);
+}
 </script>
 </head>
 <body>
@@ -47,6 +51,7 @@ function writeShortCode(id) {
   if ($ll_org_id != "") {
 ?>
 <div id="channels_list">
+  <select id="channel_select">
 <?php
   echo "<h2>Channels for $ll_org_id</h2>";
   $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
@@ -56,9 +61,10 @@ function writeShortCode(id) {
   for ($i = 0; $i < $count; $i++) {
       $title = $channels_list[$i]->title;
       $id = $channels_list[$i]->channel_id;
-      echo "<a hef=\"#\" onclick=\"writeShortCode('$id');\">$title</a><br/>\n";
+      echo "<option value=\"channelId=$id\">$title</option>\n";
   }
 ?>
+  </select>
 </div>
 <div class="mceActionPanel">
 	<div style="float: left">
@@ -66,14 +72,17 @@ function writeShortCode(id) {
 	</div>
 
 	<div style="float: right">
-		<input type="submit" id="insert" name="insert" value="Insert" onclick="writeShortCode();" />
+		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
 	</div>
 </div>
 <?php } else { ?>
-  You must enter in your organization id in the settings page.
+  <p>You must enter in your organization id in the settings page.</p>
+  <div class="mceActionPanel">
+  	<div style="float: left">
+  		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+  	</div>
+  </div>
 <?php } ?>
-
-
 
 </body>
 </html>
