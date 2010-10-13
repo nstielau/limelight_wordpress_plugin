@@ -63,13 +63,34 @@ $ll_org_id = get_option('ll_org_id');
 <div class="panel_wrapper">
 	<!-- media panel -->
 	<div id="media_panel" class="panel">
-	  Media!
+    <p>Select Media</p>
+    <select id="media_select">
+    <?php
+      $media_url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.json";
+      $media_json = file_get_contents($media_url);
+      $media_list = json_decode($media_json);
+      $count = count($media_list);
+      for ($i = 0; $i < $count; $i++) {
+          $title = $media_list[$i]->title;
+          $id = $media_list[$i]->channel_id;
+          echo "<option value=\"mediaId=$id\">$title</option>\n";
+      }
+    ?>
+    </select>
+    <div class="mceActionPanel">
+    	<div style="float: left">
+    		<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+    	</div>
+
+    	<div style="float: right">
+    		<input type="submit" id="insert" name="insert" value="Insert" onclick="select_channel();" />
+    	</div>
+    </div>
   </div>
   <div id="channels_panel" class="panel current">
     <p>Select Channel</p>
     <select id="channel_select">
     <?php
-      echo "<h2>Channels for $ll_org_id</h2>";
       $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
       $channels_json = file_get_contents($url);
       $channels_list = json_decode($channels_json);
