@@ -18,6 +18,23 @@ if ( !is_user_logged_in() || !current_user_can('edit_posts') )
 // get the organziation id
 $ll_org_id = get_option('ll_org_id');
 
+
+function request_cache($url, $key, $timeout=7200) {
+  $dest_file = WP_LOAD_PATH."wp-content/$key_limelight_cache"
+	if(!file_exists($dest_file) || filemtime($dest_file) < (time()-$timeout)) {
+		$data = file_get_contents($url);
+		if ($data === false) return false;
+		$tmpf = tempnam(WP_LOAD_PATH.'/wp-content','limelight_cache');
+		$fp = fopen($tmpf,"w");
+		fwrite($fp, $data);
+		fclose($fp);
+		rename($tmpf, $dest_file);
+	} else {
+		return file_get_contents($dest_file);
+	}
+	return($data);
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -72,7 +89,7 @@ $ll_org_id = get_option('ll_org_id');
     <select id="media_select">
     <?php
       $media_url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/media.json";
-      $media_json = file_get_contents($media_url);
+      $media_json = request_cache($media_url, 'media');
       $media_list = json_decode($media_json);
       $count = count($media_list);
       for ($i = 0; $i < $count; $i++) {
