@@ -19,8 +19,8 @@
 			ed.addCommand('mce_limelight', function() {
 				ed.windowManager.open({
 					file : url + '/window.php',
-					width : 360 + ed.getLang('limelight.delta_width', 0),
-					height : 210 + ed.getLang('limelight.delta_height', 0),
+					width : 500,
+					height : 300,
 					inline : 1
 				}, {
 					plugin_url : url // Plugin absolute URL

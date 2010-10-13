@@ -10,9 +10,9 @@ $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
   <script language="javascript" type="text/javascript">
-function writeShortCode() {
+function writeShortCode(id) {
   if(window.tinyMCE) {
-    window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight channelId=2bc02e0995ee4e6e9fb62512a41af408]");
+    window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight channelId=" + id + "]");
     //Peforms a clean up of the current editor HTML.
     //tinyMCEPopup.editor.execCommand('mceCleanup');
     //Repaints the editor. Sometimes the browser has graphic glitches.
@@ -52,8 +52,9 @@ function handleChannels(data) {
   $channels_list = json_decode($channels_json);
   $count = count($channels_list);
   for ($i = 0; $i < $count; $i++) {
-      $title = $channels_list[$i]['title'];
-      echo "<a href=\"\">$title</a><br/>\n";
+      $title = $channels_list[$i]->title;
+      $id = $channels_list[$i]->channel_id;
+      echo "<a href=\"writeShortCode('$id');\">$title</a><br/>\n";
   }
   ?>
 
