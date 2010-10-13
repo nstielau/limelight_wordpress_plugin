@@ -27,6 +27,7 @@ function request_cache($url, $key, $timeout=7200) {
 		if ($data === false) return false;
 		// $tmpf = tempnam(WP_LOAD_PATH.'/wp-content','limelight_cache');
 		$tmpf = tmpfile();
+	  echo "Tmp file: $tmpf<br/>";
 		$fp = fopen($tmpf,"w");
 		fwrite($fp, $data);
 		fclose($fp);
