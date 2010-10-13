@@ -42,11 +42,16 @@ function handleChannels(data) {
   //alert("Loaded " + data.length + " channels.");
 }
 </script>
-<script language="javascript" type="text/javascript" src="http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.js?callback=handleChannels"></script>
 </head>
 <body>
 
 <div id="channels_list">
+  <?php
+  $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
+  $channels_json = file_get_contents($url);
+  $channels_list = json_decode($channels_json);
+  var_dump($channels_json);
+  ?>
 
 </div>
 
