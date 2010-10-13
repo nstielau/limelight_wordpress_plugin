@@ -50,7 +50,11 @@ function handleChannels(data) {
   $url = "http://api.delvenetworks.com/organizations/35cead0a66324a428fba2a4117707165/channels.json";
   $channels_json = file_get_contents($url);
   $channels_list = json_decode($channels_json);
-  var_dump($channels_json);
+  $count = count($channels_list);
+  for ($i = 0; $i < $count; $i++) {
+      $title = $channels_list[$i]['title'];
+      echo "<a href=\"\">$title</a><br/>\n";
+  }
   ?>
 
 </div>
