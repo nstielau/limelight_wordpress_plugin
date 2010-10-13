@@ -41,7 +41,7 @@ if($_POST['limelight_hidden'] == 'Y') {
     <p>These Flashvars will be added before any specific Flashvars</p>
 
     <?php    echo "<h4>" . __( 'Limelight API Settings', 'limelight_text_domain' ) . "</h4>"; ?>
-    <p><?php _e("Organization ID: " ); ?><input type="text" name="ll_org_id" value="<?php echo $ll_org_id; ?>" size="32"><?php _e(" ex: 1fcedd0a66334ac28fbb2a4117707145" ); ?></p>
+    <p><?php _e("Organization ID: " ); ?><input type="text" name="ll_org_id" value="<?php echo $ll_org_id; ?>" size="40"><?php _e(" ex: 1fcedd0a66334ac28fbb2a4117707145" ); ?></p>
 
     <p class="submit">
     <input type="submit" name="Submit" value="<?php _e('Update Options', 'limelight_text_domain' ) ?>" />
