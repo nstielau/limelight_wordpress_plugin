@@ -28,25 +28,29 @@ $ll_org_id = get_option('ll_org_id');
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
   <script language="javascript" type="text/javascript">
-function writeShortCode(flashVars) {
-  if(window.tinyMCE) {
-    window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight " + flashVars + "]");
-    //Peforms a clean up of the current editor HTML.
-    //tinyMCEPopup.editor.execCommand('mceCleanup');
-    //Repaints the editor. Sometimes the browser has graphic glitches.
-    tinyMCEPopup.editor.execCommand('mceRepaint');
-    tinyMCEPopup.close();
-  }
+	function init() {
+		tinyMCEPopup.resizeToInnerSize();
+	}
 
-  return false;
-}
-function select_channel() {
-  var channelSelect = document.getElementById('channel_select');
-  writeShortCode(channel_select.value);
-}
+  function writeShortCode(flashVars) {
+    if(window.tinyMCE) {
+      window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight " + flashVars + "]");
+      //Peforms a clean up of the current editor HTML.
+      //tinyMCEPopup.editor.execCommand('mceCleanup');
+      //Repaints the editor. Sometimes the browser has graphic glitches.
+      tinyMCEPopup.editor.execCommand('mceRepaint');
+      tinyMCEPopup.close();
+    }
+
+    return false;
+  }
+  function select_channel() {
+    var channelSelect = document.getElementById('channel_select');
+    writeShortCode(channel_select.value);
+  }
 </script>
 </head>
-<body>
+<body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('mediatag').focus();" style="display: none">
 <?php
   if ($ll_org_id != "") {
 ?>
