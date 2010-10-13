@@ -29,7 +29,7 @@
 
 			// Register example button
 			ed.addButton('limelight', {
-				title : 'Somethign about limelight',
+				title : 'Add a Limelight video or channel',
 				cmd : 'mce_limelight',
 				image : url + '/limelight.gif'
 			});
