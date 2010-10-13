@@ -20,20 +20,20 @@ $ll_org_id = get_option('ll_org_id');
 
 
 function request_cache($url, $key, $timeout=7200) {
-  $dest_file = WP_LOAD_PATH."wp-content/".$key."_limelight_cache";
-  echo "Dest file: $dest_file<br/>";
-	if(!file_exists($dest_file) || filemtime($dest_file) < (time()-$timeout)) {
+  $cache_file = get_option('limelight_'.$key.'_cache');
+	if(!file_exists($cache_file) || filemtime($cache_file) < (time()-$timeout)) {
 	  echo "Not cached<br/>";
 		$data = file_get_contents($url);
 		if ($data === false) return false;
-		$tmpf = tempnam(WP_LOAD_PATH.'/wp-content','limelight_cache');
+		// $tmpf = tempnam(WP_LOAD_PATH.'/wp-content','limelight_cache');
+		$tmpf = tmpfile();
 		$fp = fopen($tmpf,"w");
 		fwrite($fp, $data);
 		fclose($fp);
-		rename($tmpf, $dest_file);
+    update_option('limelight_'.$key.'_cache', $tmp);
 	} else {
 	  echo "Cached<br/>";
-		return file_get_contents($dest_file);
+		return file_get_contents($cache_file);
 	}
 	return($data);
 }
