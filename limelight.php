@@ -15,7 +15,7 @@ Author URI: http://www.limelightnetworks.com/
 add_action('admin_menu', 'll_settings_menu');
 
 function ll_settings_menu() {
-  add_options_page('Limelight Video Options', 'Limelight Video', 'manage_options', 'll_video', 'll_video_options');
+  add_options_page('Limelight Networks Options', 'Limelight Networks', 'manage_options', 'll_video', 'll_video_options');
 
 }
 

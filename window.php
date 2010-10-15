@@ -1,11 +1,4 @@
 <?php
-/*
-+----------------------------------------------------------------+
-+ wordtube-tinymce V1.60
-+ by Alex Rabe
-+----------------------------------------------------------------+
-*/
-
 $site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
 
 // look up for the path

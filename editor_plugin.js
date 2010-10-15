@@ -29,7 +29,7 @@
 
 			// Register example button
 			ed.addButton('limelight', {
-				title : 'Add a Limelight video or channel',
+				title : 'Add a Limelight Networks video or channel',
 				cmd : 'mce_limelight',
 				image : url + '/limelight.gif'
 			});
@@ -48,11 +48,11 @@
 		 */
 		getInfo : function() {
 			return {
-					longname  : 'limelight',
-					author 	  : 'Alex Rabe',
-					authorurl : 'http://alexrabe.boelinger.com',
-					infourl   : 'http://alexrabe.boelinger.com',
-					version   : "2.0"
+					longname  : 'Limelight Networks',
+					author 	  : 'Limelight Networks',
+					authorurl : 'http://limelightnetworks.com',
+					infourl   : 'http://limelightnetworks.com',
+					version   : "1.0"
 			};
 		}
 	});
