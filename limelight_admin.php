@@ -29,6 +29,7 @@ if($_POST['limelight_hidden'] == 'Y') {
   $ll_org_id = get_option('ll_org_id');
   $ll_default_width = get_option('ll_default_width');
   $ll_default_height = get_option('ll_default_height');
+  $ll_default_height = get_option('ll_additional_flashvars');
 }
 ?>
 
