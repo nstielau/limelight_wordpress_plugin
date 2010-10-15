@@ -44,6 +44,9 @@ if($_POST['limelight_hidden'] == 'Y') {
     For example:
     <code>[limelight mediaId=1fcedd0a66334ac28fbb2a4117707145&playerForm=DelvePlaylistPlayer 800 400]</code>
   </p>
+  <p>
+    This plugin also adds a button to the post editor button that will popup a window and allow you to select from your media and channels.
+  </p>
 
   <form name="limelight_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
     <input type="hidden" name="limelight_hidden" value="Y">
