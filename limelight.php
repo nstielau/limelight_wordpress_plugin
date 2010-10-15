@@ -2,7 +2,7 @@
 /*
 Plugin Name: Limelight Video Integration
 Description: Integrates your video content into Wordpress.
-Version: 0.0.1
+Version: 1.0.0
 Plugin URI: http://www.limelightnetworks.com/
 Author: Limelight
 Author URI: http://www.limelightnetworks.com/
@@ -24,7 +24,7 @@ function ll_video_options() {
     wp_die( __('You do not have sufficient permissions to access this page.') );
   }
 
-  include('ll_admin.php');
+  include('limelight_admin.php');
 }
 
 
