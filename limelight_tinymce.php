@@ -65,4 +65,3 @@ class add_ll_button {
 $ll_tinymce_button = new add_ll_button();
 
 ?>
-
