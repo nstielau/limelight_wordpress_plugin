@@ -35,6 +35,16 @@ if($_POST['limelight_hidden'] == 'Y') {
 
 <div class="wrap">
   <?php    echo "<h2>" . __( 'Limelight Networks Options', 'limelight_text_domain' ) . "</h2>"; ?>
+
+  <?php    echo "<h4>" . __( 'Limelight Networks Embed Codes', 'limelight_text_domain' ) . "</h4>"; ?>
+  <p>
+    To insert a video or channel into a post, using the following shortcode:<code>[limelight FLASHVARS WIDTH HEIGHT]</code>where FLASHVARS is a string of variables to pass to the player, and HEIGHT and WIDTH are optional dimensions in pixels.  This shortcode gets transformed into an embedcode when the post is loaded.
+  </p>
+  <p>
+    For example:
+    <code>[limelight mediaId=1fcedd0a66334ac28fbb2a4117707145&playerForm=DelvePlaylistPlayer 800 400]</code>
+  </p>
+
   <form name="limelight_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
     <input type="hidden" name="limelight_hidden" value="Y">
 
