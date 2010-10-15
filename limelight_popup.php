@@ -99,7 +99,7 @@ function request_cache($url, $key, $timeout=7200) {
 <div class="panel_wrapper">
   <!-- media panel -->
   <div id="media_panel" class="panel">
-    <p>Select Media</p>
+    <p>Media</p>
     <select id="media_select">
     <?php
       $media_url = "http://api.delvenetworks.com/organizations/$ll_org_id/media.json";
@@ -128,7 +128,7 @@ function request_cache($url, $key, $timeout=7200) {
     </div>
   </div>
   <div id="channels_panel" class="panel current">
-    <p>Select Channel</p>
+    <p>Channel</p>
     <select id="channel_select">
     <?php
       $url = "http://api.delvenetworks.com/organizations/$ll_org_id/channels.json";
