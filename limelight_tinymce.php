@@ -8,7 +8,10 @@ Author: Limelight
 Author URI: http://www.limelightnetworks.com/
 */
 
-// TODO: Figure out how to manipulate iFrame dom with jQuery
+/**
+ * Adding the actions and hooks for admin menu, and embed-code short code replacement.
+ *
+ */
 
 class add_ll_button {
 
