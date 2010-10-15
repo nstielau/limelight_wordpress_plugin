@@ -1,12 +1,18 @@
 <?php
-$site_url = "http://ec2-174-129-76-127.compute-1.amazonaws.com/wordpress";
+/**
+ * The HTML for post-editing popup window.
+ *
+ */
 
-// look up for the path
-require_once(dirname(__FILE__).'/limelight-config.php');
+// Load Wordpress
+require_once(dirname(__FILE__).'/limelight_config.php');
 
 // check for rights
 if ( !is_user_logged_in() || !current_user_can('edit_posts') )
  wp_die(__("You are not allowed to be here"));
+
+// Site URL
+$site_url = get_option('siteurl');
 
 // get the organziation id
 $ll_org_id = get_option('ll_org_id');
