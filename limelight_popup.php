@@ -4,6 +4,16 @@
  *
  */
 
+// Define Wordpress load path
+if ( !defined('WP_LOAD_PATH') ) {
+  /** classic root path if wp-content and plugins is below wp-config.php */
+  $classic_root = dirname(dirname(dirname(dirname(__FILE__)))) . '/' ;
+  if (file_exists( $classic_root . 'wp-load.php') )
+    define( 'WP_LOAD_PATH', $classic_root);
+  else
+    exit("Could not find wp-load.php");
+}
+
 // Load Wordpress
 require_once(WP_LOAD_PATH.'wp-load.php');
 
