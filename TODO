@@ -5,27 +5,21 @@ Considerations:
   Where is code hosted
   License?
 
-Features:
-  Translation?
-
 TODO:
-  Check out other plugins, kaltura, youtube, etc
-  Break out other plugins?
+
   Complain if org ID isn't set?
-  Ping some URL to track wordpress installs? register_activation_hook
-  MediaPile
-    like wordTube?
   Widgets?
     Wait until caching
-  Template functions?
+  Is caching OK?
+  Try on nuclearrooster.com
+  Pull out code into functions.php
   Documentation in admin page.
   Validation
-    validate both insert window.php and admin options page
+    Validate both insert window.php and admin options page
     Check that the org ID is there
     Check that is org ID is valid (32 chars, alpha numerics)
-  Caching
-  Fix height issue
-  Add more options (height, width, playerForm, etc)
+  Fix modal height issue
   Clean up
   Submit to wordpress.org
   Loading spinner
+  Translation?
