@@ -73,15 +73,15 @@ function request_cache($url, $key, $timeout=7200) {
 
   function select_channel() {
     var channelSelect = document.getElementById('channel_select');
-    var width = document.getElementById('channels_width');
-    var height = document.getElementById('channels_height');
+    var width = document.getElementById('channel_width').value;
+    var height = document.getElementById('channel_height').value;
     writeShortCode(channel_select.value + "&playerForm=DelvePlaylistPlayer", width, height);
   }
 
   function select_media() {
     var mediaSelect = document.getElementById('media_select');
-    var width = document.getElementById('media_width');
-    var height = document.getElementById('media_height');
+    var width = document.getElementById('media_width').value;
+    var height = document.getElementById('media_height').value;
     writeShortCode(media_select.value, width, height);
   }
 </script>
@@ -143,9 +143,9 @@ function request_cache($url, $key, $timeout=7200) {
     ?>
     </select>
     <p>Width</p>
-    <input id="channels_width" type="text" value="" />
+    <input id="channel_width" type="text" value="" />
     <p>Height</p>
-    <input id="channels_height" type="text" value="" />
+    <input id="channel_height" type="text" value="" />
     <div class="mceActionPanel">
       <div style="float: left">
         <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
