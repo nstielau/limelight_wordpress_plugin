@@ -40,8 +40,8 @@ if($_POST['limelight_hidden'] == 'Y') {
     <?php    echo "<h4>" . __( 'Limelight Embed Code Settings', 'limelight_text_domain' ) . "</h4>"; ?>
     <p><?php _e("Video player width (px): " ); ?><input type="text" name="ll_default_width" value="<?php echo $ll_default_width; ?>" size="5"><?php _e(" ex: 480" ); ?></p>
     <p><?php _e("Video player height (px): " ); ?><input type="text" name="ll_default_height" value="<?php echo $ll_default_height; ?>" size="5"><?php _e(" ex: 411" ); ?></p>
-    <p><em>Warning</em>: This will change the height and width for any players that don&quot;t have specific dimensions set. </p>
-    <p><?php _e("Additional Flashvars: " ); ?><input type="text" name="ll_additional_flashvars" value="<?php echo $ll_additional_flashvars; ?>" size="40"><?php _e(" ex: deepLink=true" ); ?></p>
+    <p><em>Warning</em>: This will change the height and width for any players that do not have specific dimensions set. </p>
+    <p><?php _e("Additional Flashvars: " ); ?><input type="text" name="ll_additional_flashvars" value="<?php echo $ll_additional_flashvars; ?>" size="40"><?php _e(" ex: deepLink=true&var=val" ); ?></p>
     <p>These Flashvars will be added before any specific Flashvars</p>
 
     <?php    echo "<h4>" . __( 'Limelight API Settings', 'limelight_text_domain' ) . "</h4>"; ?>
