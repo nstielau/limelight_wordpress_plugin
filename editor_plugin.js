@@ -18,7 +18,7 @@
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 			ed.addCommand('mce_limelight', function() {
 				ed.windowManager.open({
-					file : url + '/window.php',
+					file : url + '/limelight_popup.php',
 					width : 500,
 					height : 400,
 					inline : 1
