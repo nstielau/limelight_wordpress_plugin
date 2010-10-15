@@ -5,7 +5,7 @@
  */
 
 // Load Wordpress
-require_once(dirname(__FILE__).'/limelight_config.php');
+require_once(WP_LOAD_PATH.'wp-load.php');
 
 // check for rights
 if ( !is_user_logged_in() || !current_user_can('edit_posts') )
