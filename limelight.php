@@ -54,14 +54,14 @@ function limelight_plugin_callback($match) {
   $output = LIMELIGHT_TARGET;
   $output = str_replace("###FLASHVARS###", "$additional_flashvars&$flashvars", $output);
 
-  if (array_key_exists(2, $tag_parts)) {
+  if (array_key_exists(2, $tag_parts) && trim($tag_parts[2]) != "") {
     $width = $tag_parts[2];
   } else {
     $width = get_option('ll_default_width', LIMELIGHT_WIDTH);
   }
   $output = str_replace("###WIDTH###", $width, $output);
 
-  if (array_key_exists(3, $tag_parts)) {
+  if (array_key_exists(3, $tag_parts) && trim($tag_parts[3]) != "") {
     $height = $tag_parts[3];
   } else {
     $height = get_option('ll_default_height', LIMELIGHT_HEIGHT);
