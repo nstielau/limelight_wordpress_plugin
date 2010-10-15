@@ -63,7 +63,7 @@ function request_cache($url, $key, $timeout=7200) {
 
   function select_channel() {
     var channelSelect = document.getElementById('channel_select');
-    writeShortCode(channel_select.value);
+    writeShortCode(channel_select.value + "&playerForm=DelvePlaylistPlayer");
   }
 
   function select_media() {
