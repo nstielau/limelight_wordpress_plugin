@@ -59,9 +59,9 @@ function request_cache($url, $key, $timeout=7200) {
     tinyMCEPopup.resizeToInnerSize();
   }
 
-  function writeShortCode(flashVars) {
+  function writeShortCode(flashVars, width, height) {
     if(window.tinyMCE) {
-      window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight " + flashVars + "]");
+      window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, "[limelight " + flashVars + " " + width + " " + height + "]");
       //Peforms a clean up of the current editor HTML.
       //tinyMCEPopup.editor.execCommand('mceCleanup');
       //Repaints the editor. Sometimes the browser has graphic glitches.
@@ -73,12 +73,16 @@ function request_cache($url, $key, $timeout=7200) {
 
   function select_channel() {
     var channelSelect = document.getElementById('channel_select');
-    writeShortCode(channel_select.value + "&playerForm=DelvePlaylistPlayer");
+    var width = document.getElementById('channels_width');
+    var height = document.getElementById('channels_height');
+    writeShortCode(channel_select.value + "&playerForm=DelvePlaylistPlayer", width, height);
   }
 
   function select_media() {
     var mediaSelect = document.getElementById('media_select');
-    writeShortCode(media_select.value);
+    var width = document.getElementById('media_width');
+    var height = document.getElementById('media_height');
+    writeShortCode(media_select.value, width, height);
   }
 </script>
 </head>
@@ -109,6 +113,10 @@ function request_cache($url, $key, $timeout=7200) {
       }
     ?>
     </select>
+    <p>Width</p>
+    <input id="media_width" type="text" value="" />
+    <p>Height</p>
+    <input id="media_height" type="text" value="" />
     <div class="mceActionPanel">
       <div style="float: left">
         <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
@@ -134,6 +142,10 @@ function request_cache($url, $key, $timeout=7200) {
       }
     ?>
     </select>
+    <p>Width</p>
+    <input id="channels_width" type="text" value="" />
+    <p>Height</p>
+    <input id="channels_height" type="text" value="" />
     <div class="mceActionPanel">
       <div style="float: left">
         <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
