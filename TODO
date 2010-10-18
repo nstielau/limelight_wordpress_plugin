@@ -5,20 +5,19 @@ TODO:
     Clean up todos
     Import to SVN
     Tag v1.0
-    Add GPL license?
-    Give access to delve?
 
   Future:
-    Complain if org ID isn't set?
+    Admin_notices: Complain if org ID isn't set
+		PHP 4 Json solution: http://blueberryware.net/wp-content/uploads/2008/10/jsonphp.txt
     Widgets?
       Media for specified channel
-    Is caching OK?
+    Improve caching, a la wp-super cache
     Pull out code into functions.php
     Validation
       Validate both insert window.php and admin options page
       Check that the org ID is there
       Check that is org ID is valid (32 chars, alpha numerics)
     Fix modal height issue
-    Loading spinner
-    Translation?
-		Uninstall function
+    Loading spinner when waiting for API
+    Translation files
+		Uninstall function to remove db options
