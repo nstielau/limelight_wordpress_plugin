@@ -30,10 +30,11 @@ Your will see your 32 character organization ID.  It will look something like "1
 
 == Screenshots ==
 
-1. Select your media/channels easily from drop-down menus.
-2. View all of your media/channels in drop-down menus.
-3. Use the wizard or manually use the Limelight Networks shortcode to insert video into your Wordpress posts and pages.
-4. Easily embed your Limelight Networks videos in your Wordpress posts and pages.
+1. The new Limelight Networks button added to the visual editor.
+2. Select your media/channels easily from drop-down menus.
+3. View all of your media/channels in drop-down menus.
+4. Use the wizard or manually use the Limelight Networks shortcode to insert video into your Wordpress posts and pages.
+5. Easily embed your Limelight Networks videos in your Wordpress posts and pages.
 
 == Changelog ==.
 
