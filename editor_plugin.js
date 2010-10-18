@@ -2,9 +2,9 @@
 
 (function() {
   // Load plugin specific language pack
-  tinymce.PluginManager.requireLangPack('limelight');
+  tinymce.PluginManager.requireLangPack('limelight_networks');
 
-  tinymce.create('tinymce.plugins.limelight', {
+  tinymce.create('tinymce.plugins.limelight_networks', {
     /**
      * Initializes the plugin, this will be executed after the plugin has been created.
      * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -58,7 +58,7 @@
   });
 
   // Register plugin
-  tinymce.PluginManager.add('limelight', tinymce.plugins.limelight);
+  tinymce.PluginManager.add('limelight_networks', tinymce.plugins.limelight_networks);
 })();
 
 
