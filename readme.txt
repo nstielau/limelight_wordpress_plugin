@@ -25,7 +25,8 @@ Standard plugin installation procedure:
 
 = Where can I find my 'organization ID' =
 
-An answer to that question.
+Log in to your Limelight Networks account, go to 'Settings', and select the 'Developer Tools' tab.
+Your will see your 32 character organization ID.  It will look something like "1f09ae2dd5a7410a932c154e97b5593f".
 
 == Screenshots ==
 
