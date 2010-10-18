@@ -35,6 +35,11 @@ if( $_POST['limelight_hidden'] == 'Y' ) {
 
 <div class="wrap">
 	<?php echo '<h2>' . __( 'Limelight Networks Options', 'limelight_text_domain' ) . '</h2>'; ?>
+	<?php if (version_compare(PHP_VERSION, '5.2.0') < 0) { ?>
+		<p>
+			<strong>This plugin requires PHP 5.2.0.  You are running <?php echo phpversion(); ?></strong>
+		</p>
+	<?php } ?>
 
 	<?php echo '<h4>' . __( 'Limelight Networks Embed Codes', 'limelight_text_domain' ) . '</h4>'; ?>
 	<p>

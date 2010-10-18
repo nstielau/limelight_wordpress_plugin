@@ -12,6 +12,8 @@ Limelight Networks video platform integration.  Add your media into any Wordpres
 This plugin integrates your Wordpress installation with your Limelight Networks account, making it
 easy to add audio, video, and channels into your Wordpress posts and pages.
 
+Requires PHP 5+
+
 == Installation ==
 
 Standard plugin installation procedure:
