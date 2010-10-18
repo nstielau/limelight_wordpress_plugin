@@ -31,7 +31,7 @@
 			ed.addButton('limelight', {
 				title : 'Add a Limelight Networks video or channel',
 				cmd : 'mce_limelight',
-				image : url + '/limelight.gif'
+				image : url + '/limelight_logo.png'
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected
