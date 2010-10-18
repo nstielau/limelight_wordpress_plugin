@@ -1,5 +1,6 @@
 TODO:
   Prerelease:
+		Declare/check PHP5
     Try on nuclearrooster.com
     Clean up todos
     Import to SVN
@@ -20,3 +21,4 @@ TODO:
     Fix modal height issue
     Loading spinner
     Translation?
+		Uninstall function
