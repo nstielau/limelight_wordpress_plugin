@@ -102,11 +102,13 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 	<!-- media panel -->
 	<div id="media_panel" class="panel">
 		<p>Media</p>
+		<?php
+		$media_url = "http://api.delvenetworks.com/organizations/$limelight_org_id/media.json";
+		$media_json = request_cached_resource( $media_url , 'media' );
+		$media_list = json_decode( $media_json );		
+		?>
 		<select id="media_select">
 		<?php
-			$media_url = "http://api.delvenetworks.com/organizations/$limelight_org_id/media.json";
-			$media_json = request_cached_resource( $media_url , 'media' );
-			$media_list = json_decode( $media_json );
 			$count = count( $media_list );
 			for ($i = 0; $i < $count; $i++) {
 					$title = $media_list[$i]->title;
@@ -131,11 +133,13 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 	</div>
 	<div id="channels_panel" class="panel current">
 		<p>Channel</p>
+		<?php
+		$url = "http://api.delvenetworks.com/organizations/$limelight_org_id/channels.json";
+		$channels_json = request_cached_resource( $url , 'channels' );
+		$channels_list = json_decode( $channels_json );
+		?>
 		<select id="channel_select">
 		<?php
-			$url = "http://api.delvenetworks.com/organizations/$limelight_org_id/channels.json";
-			$channels_json = request_cached_resource( $url , 'channels' );
-			$channels_list = json_decode( $channels_json );
 			$count = count( $channels_list );
 			for ($i = 0; $i < $count; $i++) {
 					$title = $channels_list[$i]->title;
