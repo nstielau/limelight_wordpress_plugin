@@ -34,7 +34,7 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 	if(!file_exists( $cache_file ) || filemtime( $cache_file ) < ( time()-$timeout ) ) {
 		$response = wp_remote_get( $url );
 		if( is_wp_error( $response ) ) {
-			echo "Error loading remote resource '$url'";
+			return false;
 		}
 		$data = wp_remote_retrieve_body( $response );
 		if ( $data === false ) return false;
@@ -105,10 +105,13 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 		<?php
 		$media_url = "http://api.delvenetworks.com/organizations/$limelight_org_id/media.json";
 		$media_json = request_cached_resource( $media_url , 'media' );
-		$media_list = json_decode( $media_json );		
+		if ( $media_json === false) {
+			echo "Error loading media.";
+		}
 		?>
 		<select id="media_select">
 		<?php
+			$media_list = json_decode( $media_json );
 			$count = count( $media_list );
 			for ($i = 0; $i < $count; $i++) {
 					$title = $media_list[$i]->title;
@@ -136,10 +139,13 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 		<?php
 		$url = "http://api.delvenetworks.com/organizations/$limelight_org_id/channels.json";
 		$channels_json = request_cached_resource( $url , 'channels' );
-		$channels_list = json_decode( $channels_json );
+		if ( $channels_json === false) {
+			echo "Error loading channels.";
+		}
 		?>
 		<select id="channel_select">
 		<?php
+			$channels_list = json_decode( $channels_json );
 			$count = count( $channels_list );
 			for ($i = 0; $i < $count; $i++) {
 					$title = $channels_list[$i]->title;
