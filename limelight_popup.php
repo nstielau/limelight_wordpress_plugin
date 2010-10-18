@@ -25,14 +25,18 @@ if ( !is_user_logged_in() || !current_user_can('edit_posts') )
 $site_url = get_option( 'siteurl' );
 
 // get the organziation id
-$ll_org_id = get_option( 'll_org_id' );
+$limelight_org_id = get_option( 'limelight_org_id' );
 
 // Caching function
 function request_cached_resource( $url , $key , $timeout=7200 ) {
   $cache_file_key = 'limelight_'.$key.'_cache_file';
   $cache_file = get_option( $cache_file_key );
   if(!file_exists( $cache_file ) || filemtime( $cache_file ) < ( time()-$timeout ) ) {
-    $data = file_get_contents( $url );
+		$response = wp_remote_get( $url );
+		if( is_wp_error( $response ) ) {
+			echo "Error loading remote resource '$url'";
+		}
+		$data = wp_remote_retrieve_body( $response );
     if ( $data === false ) return false;
     $tmpf = tempnam( sys_get_temp_dir() , $cache_file_key );
     $fp = fopen( $tmpf , "w" );
@@ -87,7 +91,7 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 </script>
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('mediatag').focus();" style="display: none">
-<?php if ( $ll_org_id != "" && strlen( $ll_org_id ) == 32 ) { ?>
+<?php if ( $limelight_org_id != "" && strlen( $limelight_org_id ) == 32 ) { ?>
 <div class="tabs">
   <ul>
     <li id="channels_tab" class="current"><span><a href="javascript:mcTabs.displayTab('channels_tab','channels_panel');" onmousedown="return false;">Channels</a></span></li>
@@ -100,7 +104,7 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
     <p>Media</p>
     <select id="media_select">
     <?php
-      $media_url = "http://api.delvenetworks.com/organizations/$ll_org_id/media.json";
+      $media_url = "http://api.delvenetworks.com/organizations/$limelight_org_id/media.json";
       $media_json = request_cached_resource( $media_url , 'media' );
       $media_list = json_decode( $media_json );
       $count = count( $media_list );
@@ -129,7 +133,7 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
     <p>Channel</p>
     <select id="channel_select">
     <?php
-      $url = "http://api.delvenetworks.com/organizations/$ll_org_id/channels.json";
+      $url = "http://api.delvenetworks.com/organizations/$limelight_org_id/channels.json";
       $channels_json = request_cached_resource( $url , 'channels' );
       $channels_list = json_decode( $channels_json );
       $count = count( $channels_list );

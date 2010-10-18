@@ -6,17 +6,17 @@
 
 if( $_POST['limelight_hidden'] == 'Y' ) {
 	//Form data sent
-	$ll_org_id = $_POST['ll_org_id'];
-	update_option( 'll_org_id' , $ll_org_id );
+	$limelight_org_id = $_POST['limelight_org_id'];
+	update_option( 'limelight_org_id' , $limelight_org_id );
 
-	$ll_default_width = $_POST['ll_default_width'];
-	update_option( 'll_default_width' , $ll_default_width );
+	$limelight_default_width = $_POST['limelight_default_width'];
+	update_option( 'limelight_default_width' , $limelight_default_width );
 
-	$ll_default_height = $_POST['ll_default_height'];
-	update_option( 'll_default_height' , $ll_default_height );
+	$limelight_default_height = $_POST['limelight_default_height'];
+	update_option( 'limelight_default_height' , $limelight_default_height );
 
-	$ll_additional_flashvars = $_POST['ll_additional_flashvars'];
-	update_option( 'll_additional_flashvars' , $ll_additional_flashvars );
+	$limelight_additional_flashvars = $_POST['limelight_additional_flashvars'];
+	update_option( 'limelight_additional_flashvars' , $limelight_additional_flashvars );
 
 	// Bust cache in case org ID has changed
 	update_option( 'limelight_media_cache_file' , '');
@@ -26,10 +26,10 @@ if( $_POST['limelight_hidden'] == 'Y' ) {
 	<?php
 } else {
 	//Normal page display
-	$ll_org_id = get_option( 'll_org_id' );
-	$ll_default_width = get_option( 'll_default_width' );
-	$ll_default_height = get_option( 'll_default_height' );
-	$ll_additional_flashvars = get_option( 'll_additional_flashvars' );
+	$limelight_org_id = get_option( 'limelight_org_id' );
+	$limelight_default_width = get_option( 'limelight_default_width' );
+	$limelight_default_height = get_option( 'limelight_default_height' );
+	$limelight_additional_flashvars = get_option( 'limelight_additional_flashvars' );
 }
 ?>
 
@@ -52,14 +52,14 @@ if( $_POST['limelight_hidden'] == 'Y' ) {
 		<input type="hidden" name="limelight_hidden" value="Y">
 
 		<?php		 echo '<h4>' . __( 'Limelight Networks Embed Code Settings', 'limelight_text_domain' ) . '</h4>'; ?>
-		<p><?php _e('Video player width (px): ', 'limelight_text_domain' ); ?><input type="text" name="ll_default_width" value="<?php echo $ll_default_width; ?>" size="5"><?php _e( " ex: 480" ); ?></p>
-		<p><?php _e('Video player height (px): ', 'limelight_text_domain' ); ?><input type="text" name="ll_default_height" value="<?php echo $ll_default_height; ?>" size="5"><?php _e( " ex: 411" ); ?></p>
+		<p><?php _e('Video player width (px): ', 'limelight_text_domain' ); ?><input type="text" name="limelight_default_width" value="<?php echo $limelight_default_width; ?>" size="5"><?php _e( " ex: 480" ); ?></p>
+		<p><?php _e('Video player height (px): ', 'limelight_text_domain' ); ?><input type="text" name="limelight_default_height" value="<?php echo $limelight_default_height; ?>" size="5"><?php _e( " ex: 411" ); ?></p>
 		<p><em>Warning</em>: Changing these dimension settings with update the height and width for any players that do not have specific dimensions set. </p>
-		<p><?php _e("Additional Flashvars: ", 'limelight_text_domain'); ?><input type="text" name="ll_additional_flashvars" value="<?php echo $ll_additional_flashvars; ?>" size="40"><?php _e(" ex: deepLink=true&var=val" ); ?></p>
+		<p><?php _e("Additional Flashvars: ", 'limelight_text_domain'); ?><input type="text" name="limelight_additional_flashvars" value="<?php echo $limelight_additional_flashvars; ?>" size="40"><?php _e(" ex: deepLink=true&var=val" ); ?></p>
 		<p>These Flashvars will be added before any specific Flashvars</p>
 
 		<?php echo '<h4>' . __( 'Limelight Networks API Settings' , 'limelight_text_domain' ) . '</h4>'; ?>
-		<p><?php _e("Organization ID: " ); ?><input type="text" name="ll_org_id" value="<?php echo $ll_org_id; ?>" size="45"><?php echo __(" ex: 1fcedd0a66334ac28fbb2a4117707145", 'limelight_text_domain'); ?></p>
+		<p><?php _e("Organization ID: " ); ?><input type="text" name="limelight_org_id" value="<?php echo $limelight_org_id; ?>" size="45"><?php echo __(" ex: 1fcedd0a66334ac28fbb2a4117707145", 'limelight_text_domain'); ?></p>
 
 		<p class="submit">
 		<input type="submit" name="Submit" value="<?php _e( 'Update Options', 'limelight_text_domain' ) ?>" />
