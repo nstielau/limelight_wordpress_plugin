@@ -173,7 +173,7 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
 	<p>You must enter in your organization id in the settings page. If you have already entered your organization ID, please make sure it is valid.</p>
 	<div class="mceActionPanel">
 		<div style="float: left">
-			<input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+			<input type="button" id="cancel" name="cancel" value="OK" onclick="tinyMCEPopup.close();" />
 		</div>
 	</div>
 <?php } ?>
