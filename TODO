@@ -1,25 +1,22 @@
-
-Considerations:
-  Who owns code?
-  Is plugin on wordpress.org?
-  Where is code hosted
-  License?
-
 TODO:
+  Prerelease:
+    Clean up
+    Try on nuclearrooster.com
+    Import to SVN
+    Tag v1.0
+    Add GPL license?
+    Give access to delve?
 
-  Complain if org ID isn't set?
-  Widgets?
-    Wait until caching
-  Is caching OK?
-  Try on nuclearrooster.com
-  Pull out code into functions.php
-  Documentation in admin page.
-  Validation
-    Validate both insert window.php and admin options page
-    Check that the org ID is there
-    Check that is org ID is valid (32 chars, alpha numerics)
-  Fix modal height issue
-  Clean up
-  Submit to wordpress.org
-  Loading spinner
-  Translation?
+  Future:
+    Complain if org ID isn't set?
+    Widgets?
+      Media for specified channel
+    Is caching OK?
+    Pull out code into functions.php
+    Validation
+      Validate both insert window.php and admin options page
+      Check that the org ID is there
+      Check that is org ID is valid (32 chars, alpha numerics)
+    Fix modal height issue
+    Loading spinner
+    Translation?
