@@ -111,9 +111,9 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
       }
     ?>
     </select>
-    <p>Width (default is <?php get_option( 'll_default_width' ); ?>px)</p>
+    <p>Width (leave blank for default)</p>
     <input id="media_width" type="text" value="" />
-    <p>Height (default is <?php get_option( 'll_default_height' ); ?>px)</p>
+    <p>Height (leave blank for default)</p>
     <input id="media_height" type="text" value="" />
     <div class="mceActionPanel">
       <div style="float: left">
@@ -140,9 +140,9 @@ function request_cached_resource( $url , $key , $timeout=7200 ) {
       }
     ?>
     </select>
-    <p>Width (default is <?php echo get_option( 'll_default_width' ); ?>px)</p>
+    <p>Width (leave blank for default)</p>
     <input id="channel_width" type="text" value="" />
-    <p>Height (default is <?php echo get_option( 'll_default_height' ); ?>px)</p>
+    <p>Height (leave blank for default)</p>
     <input id="channel_height" type="text" value="" />
     <div class="mceActionPanel">
       <div style="float: left">
