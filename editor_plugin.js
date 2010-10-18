@@ -28,7 +28,7 @@
       });
 
       // Register example button
-      ed.addButton('limelight', {
+      ed.addButton('limelight_networks', {
         title : 'Add a Limelight Networks video or channel',
         cmd : 'mce_limelight',
         image : url + '/limelight_logo.png'
