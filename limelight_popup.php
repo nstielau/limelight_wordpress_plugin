@@ -7,11 +7,11 @@
 // Define Wordpress load path
 if ( !defined('WP_LOAD_PATH') ) {
   /** classic root path if wp-content and plugins is below wp-config.php */
-  $classic_root = dirname(dirname(dirname(dirname(__FILE__)))) . '/' ;
+  $classic_root = dirname( dirname( dirname( dirname(__FILE__) ) ) ) . '/' ;
   if (file_exists( $classic_root . 'wp-load.php') )
-    define( 'WP_LOAD_PATH', $classic_root);
+    define( 'WP_LOAD_PATH' , $classic_root );
   else
-    exit("Could not find wp-load.php");
+    exit( 'Could not find wp-load.php' );
 }
 
 // Load Wordpress
@@ -19,30 +19,30 @@ require_once(WP_LOAD_PATH.'wp-load.php');
 
 // check for rights
 if ( !is_user_logged_in() || !current_user_can('edit_posts') )
- wp_die(__("You are not allowed to be here"));
+ wp_die( __('You are not allowed to be here' ) );
 
 // Site URL
-$site_url = get_option('siteurl');
+$site_url = get_option( 'siteurl' );
 
 // get the organziation id
-$ll_org_id = get_option('ll_org_id');
+$ll_org_id = get_option( 'll_org_id' );
 
 // Caching function
-function request_cached_resource($url, $key, $timeout=7200) {
+function request_cached_resource( $url , $key , $timeout=7200 ) {
   $cache_file_key = 'limelight_'.$key.'_cache_file';
-  $cache_file = get_option($cache_file_key);
-  if(!file_exists($cache_file) || filemtime($cache_file) < (time()-$timeout)) {
-    $data = file_get_contents($url);
-    if ($data === false) return false;
-    $tmpf = tempnam(sys_get_temp_dir(),$cache_file_key);
-    $fp = fopen($tmpf,"w");
-    fwrite($fp, $data);
-    fclose($fp);
-    update_option($cache_file_key, $tmpf);
+  $cache_file = get_option( $cache_file_key );
+  if(!file_exists( $cache_file ) || filemtime( $cache_file ) < ( time()-$timeout ) ) {
+    $data = file_get_contents( $url );
+    if ( $data === false ) return false;
+    $tmpf = tempnam( sys_get_temp_dir() , $cache_file_key );
+    $fp = fopen( $tmpf , "w" );
+    fwrite( $fp, $data );
+    fclose( $fp );
+    update_option( $cache_file_key , $tmpf );
   } else {
-    return file_get_contents($cache_file);
+    return file_get_contents( $cache_file );
   }
-  return($data);
+  return( $data );
 }
 
 ?>
@@ -51,9 +51,9 @@ function request_cached_resource($url, $key, $timeout=7200) {
 <head>
   <title>Limelight Videos</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-  <script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
-  <script language="javascript" type="text/javascript" src="<?php echo $site_url ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+  <script language="javascript" type="text/javascript" src="<?php echo $site_url; ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+  <script language="javascript" type="text/javascript" src="<?php echo $site_url; ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+  <script language="javascript" type="text/javascript" src="<?php echo $site_url; ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
   <script language="javascript" type="text/javascript">
   function init() {
     tinyMCEPopup.resizeToInnerSize();
@@ -87,7 +87,7 @@ function request_cached_resource($url, $key, $timeout=7200) {
 </script>
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('mediatag').focus();" style="display: none">
-<?php if ($ll_org_id != "" && strlen($ll_org_id) == 32) { ?>
+<?php if ( $ll_org_id != "" && strlen( $ll_org_id ) == 32 ) { ?>
 <div class="tabs">
   <ul>
     <li id="channels_tab" class="current"><span><a href="javascript:mcTabs.displayTab('channels_tab','channels_panel');" onmousedown="return false;">Channels</a></span></li>
@@ -101,9 +101,9 @@ function request_cached_resource($url, $key, $timeout=7200) {
     <select id="media_select">
     <?php
       $media_url = "http://api.delvenetworks.com/organizations/$ll_org_id/media.json";
-      $media_json = request_cached_resource($media_url, 'media');
-      $media_list = json_decode($media_json);
-      $count = count($media_list);
+      $media_json = request_cached_resource( $media_url , 'media' );
+      $media_list = json_decode( $media_json );
+      $count = count( $media_list );
       for ($i = 0; $i < $count; $i++) {
           $title = $media_list[$i]->title;
           $id = $media_list[$i]->media_id;
@@ -130,9 +130,9 @@ function request_cached_resource($url, $key, $timeout=7200) {
     <select id="channel_select">
     <?php
       $url = "http://api.delvenetworks.com/organizations/$ll_org_id/channels.json";
-      $channels_json = request_cached_resource($url, 'channels');
-      $channels_list = json_decode($channels_json);
-      $count = count($channels_list);
+      $channels_json = request_cached_resource( $url , 'channels' );
+      $channels_list = json_decode( $channels_json );
+      $count = count( $channels_list );
       for ($i = 0; $i < $count; $i++) {
           $title = $channels_list[$i]->title;
           $id = $channels_list[$i]->channel_id;
