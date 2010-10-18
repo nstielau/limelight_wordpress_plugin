@@ -27,8 +27,8 @@ $site_url = get_option('siteurl');
 // get the organziation id
 $ll_org_id = get_option('ll_org_id');
 
-// Cache
-function request_cache($url, $key, $timeout=7200) {
+// Caching function
+function request_cached_resource($url, $key, $timeout=7200) {
   $cache_file_key = 'limelight_'.$key.'_cache_file';
   $cache_file = get_option($cache_file_key);
   if(!file_exists($cache_file) || filemtime($cache_file) < (time()-$timeout)) {
@@ -87,9 +87,7 @@ function request_cache($url, $key, $timeout=7200) {
 </script>
 </head>
 <body onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('mediatag').focus();" style="display: none">
-<?php
-  if ($ll_org_id != "" && strlen($ll_org_id) == 32) {
-?>
+<?php if ($ll_org_id != "" && strlen($ll_org_id) == 32) { ?>
 <div class="tabs">
   <ul>
     <li id="channels_tab" class="current"><span><a href="javascript:mcTabs.displayTab('channels_tab','channels_panel');" onmousedown="return false;">Channels</a></span></li>
@@ -103,7 +101,7 @@ function request_cache($url, $key, $timeout=7200) {
     <select id="media_select">
     <?php
       $media_url = "http://api.delvenetworks.com/organizations/$ll_org_id/media.json";
-      $media_json = request_cache($media_url, 'media');
+      $media_json = request_cached_resource($media_url, 'media');
       $media_list = json_decode($media_json);
       $count = count($media_list);
       for ($i = 0; $i < $count; $i++) {
@@ -132,7 +130,7 @@ function request_cache($url, $key, $timeout=7200) {
     <select id="channel_select">
     <?php
       $url = "http://api.delvenetworks.com/organizations/$ll_org_id/channels.json";
-      $channels_json = request_cache($url, 'channels');
+      $channels_json = request_cached_resource($url, 'channels');
       $channels_list = json_decode($channels_json);
       $count = count($channels_list);
       for ($i = 0; $i < $count; $i++) {
@@ -158,13 +156,12 @@ function request_cache($url, $key, $timeout=7200) {
   </div>
 </div>
 <?php } else { ?>
-  <p>You must enter in your organization id in the settings page.</p>
+  <p>You must enter in your organization id in the settings page. If you have already entered your organization ID, please make sure it is valid.</p>
   <div class="mceActionPanel">
     <div style="float: left">
       <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
     </div>
   </div>
 <?php } ?>
-
 </body>
 </html>
