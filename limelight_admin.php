@@ -34,7 +34,7 @@ if($_POST['limelight_hidden'] == 'Y') {
 ?>
 
 <div class="wrap">
-  <div style="width: 600px">
+  <div style="width: 800px">
     <?php    echo "<h2>" . __( 'Limelight Networks Options', 'limelight_text_domain' ) . "</h2>"; ?>
 
     <?php    echo "<h4>" . __( 'Limelight Networks Embed Codes', 'limelight_text_domain' ) . "</h4>"; ?>
