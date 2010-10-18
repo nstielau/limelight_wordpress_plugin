@@ -91,7 +91,7 @@ add_filter( 'the_excerpt', 'limelight_embed_generation' );
 
 class add_limelight_button {
 
-	var $pluginname = "limelight";
+	var $pluginname = "limelight_networks";
 
 	function add_limelight_button()	{
 		// Modify the version when tinyMCE plugins are changed.
