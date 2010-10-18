@@ -123,8 +123,7 @@ class add_limelight_button {
 	// Load the TinyMCE plugin : editor_plugin.js (wp2.5)
 	function add_tinymce_plugin( $plugin_array ) {
 		$site_url = get_option( 'siteurl' );
-		$plugin_array[$this->pluginname] =	"$site_url/wp-content/plugins/limelight/editor_plugin.js";
-
+		$plugin_array[$this->pluginname] = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__)).'editor_plugin.js';
 		return $plugin_array;
 	}
 
