@@ -19,7 +19,7 @@ function limelight_settings_menu() {
 	add_options_page( 'Limelight Networks Options' , 'Limelight Networks' , 'manage_options' , 'limelight_networks' , 'limelight_networks_options' );
 }
 
-function limelight_video_options() {
+function limelight_networks_options() {
 	if ( !current_user_can( 'manage_options' ) )	{
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
