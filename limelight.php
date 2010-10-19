@@ -16,7 +16,7 @@ add_action( 'admin_menu' , 'limelight_settings_menu' );
 
 function limelight_settings_menu() {
 	// Add a menu item to the 'Settings' menu
-	add_options_page( 'Limelight Networks Options' , 'Limelight Networks' , 'manage_options' , 'limelight_video' , 'limelight_video_options' );
+	add_options_page( 'Limelight Networks Options' , 'Limelight Networks' , 'manage_options' , 'limelight_networks' , 'limelight_networks_options' );
 }
 
 function limelight_video_options() {
