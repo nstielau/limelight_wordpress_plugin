@@ -1,23 +1,14 @@
-TODO:
-  Prerelease:
-		Declare/check PHP5
-    Try on nuclearrooster.com
-    Clean up todos
-    Import to SVN
-    Tag v1.0
-
-  Future:
-    Admin_notices: Complain if org ID isn't set
-		PHP 4 Json solution: http://blueberryware.net/wp-content/uploads/2008/10/jsonphp.txt
-    Widgets?
-      Media for specified channel
-    Improve caching, a la wp-super cache
-    Pull out code into functions.php
-    Validation
-      Validate both insert window.php and admin options page
-      Check that the org ID is there
-      Check that is org ID is valid (32 chars, alpha numerics)
-    Fix modal height issue
-    Loading spinner when waiting for API
-    Translation files
-		Uninstall function to remove db options
+	Admin_notices: Complain if org ID isn't set
+	PHP 4 Json solution: http://blueberryware.net/wp-content/uploads/2008/10/jsonphp.txt
+	Widgets?
+	  Media for specified channel
+	Improve caching, a la wp-super cache
+	Pull out code into functions.php
+	Validation
+	  Validate both insert window.php and admin options page
+	  Check that the org ID is there
+	  Check that is org ID is valid (32 chars, alpha numerics)
+	Fix modal height issue
+	Loading spinner when waiting for API
+	Translation files
+	Uninstall function to remove db options
